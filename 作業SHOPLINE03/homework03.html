@@ -117,7 +117,18 @@
             color: #052855;
             margin-bottom: 30px;
         }
+        a {
+            text-decoration: none;
+        }
 
+        a::after {
+            content: '';
+            display: block;
+            height: 2px;
+            width: 100px;
+            background-color: #0061ff;
+            margin: 5px auto 0px;
+        }
 
 
 
@@ -196,7 +207,9 @@
                         <li>獨有網址 ＆ SSL 安全憑證</li>
                         <li>開放 HTML／CSS 編輯</li>
                     </ul>
-                    <a href="#">看看開店祕技</a>
+                    <div>
+                        <a href="#">看看開店祕技</a>
+                    </div>
                 </div>
                 <div class="mid-item-img">
                     <img src="info01.png" alt="">
