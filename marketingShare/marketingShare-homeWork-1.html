@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 引入Bootstrap框架CSS樣式 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+</head>
+
+<body>
+    <canvas id="mkShare"></canvas>
+    <div id="container"></div>
+    <!-- 依照表格使用DOM生成元素 -->
+    <!-- <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>排名</th>
+                <th>公司名稱</th>
+                <th>國別</th>
+                <th>市佔率</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>台積電</td>
+                <td>台灣</td>
+                <td>53.1%</td>
+            </tr>
+        </tbody>
+    </table> -->
+
+
+
+    <!-- 引入Bootstrap框架JavaScript文件 -->
+    <!-- 放置在自訂<script>前 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+
+    <!-- 引入Version:2.9.4版本CDN的URL，載入Chart.js(JavaScript圖表繪製庫) -->
+    <!-- 放置在自訂<script>前 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"
+        integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+    <script>
+        // window.onload = function () {
+        //     //物件屬性 轉 陣列方法
+        //     createArrayData();
+        //     //呼叫繪製圖表方法(type,公司名(物件轉換後的陣列),市佔率(物件轉換後的陣列))
+        //     drawChart('pie', companies, data);
+        //     //     drawChart('bar', companies, data);
+        //     //     drawChart('line', companies, data);
+
+
+        //     //初始化表格
+        //     initializeTable();
+        //     //將marketingShare.titles陣列傳入方法參數
+        //     CreateThead(marketingShare.titles);
+        //     //將data陣列內的每筆Object 轉 2D Array
+        //     objectToArray();
+        //     // 動態創建table>Tbody內的tr與td(參數傳入objectToArray()轉換後的陣列)
+        //     CreateTbody(marketingShareArray);
+        // }
+
+        window.onload = marketingShareMain;
+
+
+        function marketingShareMain() {
+            //物件屬性 轉 陣列方法
+            createArrayData();
+            //呼叫繪製圖表方法(type,公司名(物件轉換後的陣列),市佔率(物件轉換後的陣列))
+            drawChart('pie', companies, data);
+            //     drawChart('bar', companies, data);
+            //     drawChart('line', companies, data);
+
+
+            //初始化表格
+            initializeTable();
+            //將marketingShare.titles陣列傳入方法參數
+            CreateThead(marketingShare.titles);
+            //將data陣列內的每筆Object 轉 2D Array
+            objectToArray();
+            // 動態創建table>Tbody內的tr與td(參數傳入objectToArray()轉換後的陣列)
+            CreateTbody(marketingShareArray);
+        }
+
+
+
+        //常數=不能被重新賦值 營銷分享 Object
+        const marketingShare = {
+            //版本=Object>property>string
+            version: "v1.0",
+            //發布=Object>property>string
+            publish: "2021.12.31",
+            //標題=Object>property>Array>string
+            titles: ["排名", "公司", "國別", "市佔率"],
+            //數據=Object>property>Array>Object
+            data: [
+                { Ranking: 1, Name: "台積電", Country: "台灣", Ratio: 53.1 },
+                { Ranking: 2, Name: "三星電子", Country: "韓國", Ratio: 17.3 },
+                { Ranking: 3, Name: "聯電", Country: "台灣", Ratio: 7.2 },
+                { Ranking: 4, Name: "格羅方德", Country: "美國", Ratio: 6.1 },
+                { Ranking: 5, Name: "中芯國際", Country: "中國", Ratio: 5.3 },
+                { Ranking: 6, Name: "華虹半導體", Country: "中國", Ratio: 2.6 },
+                { Ranking: 7, Name: "力積電", Country: "台灣", Ratio: 1.8 },
+                { Ranking: 8, Name: "世界先進", Country: "台灣", Ratio: 1.4 },
+                { Ranking: 9, Name: "高塔半導體", Country: "以色列", Ratio: 1.4 },
+                { Ranking: 10, Name: "東部高科", Country: "南韓", Ratio: 1 }
+            ]
+        };
+        //圓餅圖需要data陣列中的Name/Ratio
+        //宣告待轉換的空變數
+        let companies = [];// Name/公司
+        let data = [];// Ratio/市佔率
+
+        //宣告待轉換的空變數
+        let marketingShareArray = [];//Object to 2D Array
+        let container;
+        let table;
+        let thead;
+        let tbody;
+
+        function initializeTable() {
+            // 使用 DOM API抓取ID名稱為'container'的DIV標籤,指派給container變數
+            container = document.getElementById('container');
+            // 使用 DOM API 創建<table>標籤指派給table變數
+            table = document.createElement('table');
+            // 使用 DOM API 創建<thead>標籤指派給thead變數
+            thead = document.createElement('thead');
+            // 使用 DOM API 創建<tbody>標籤指派給tbody變數
+            tbody = document.createElement('tbody');
+            // 使用 DOM API 設定table變數裡面的<table>標籤中的class屬性值(bootstrap框架)
+            table.setAttribute("class", "table table-bordered table-striped table-secondary  table-hover");
+        }
+
+        //動態創建table>thead內的tr與th(參數傳入陣列)
+        function CreateThead(titleArray) {
+            // 創建<tr>標籤指派給theadTR變數
+            let theadTR = document.createElement("tr");
+            // 把傳入的陣列forEach迭代
+            titleArray.forEach((item, index) => {
+                // 創建<th>標籤指派給th變數
+                let th = document.createElement("th");
+                // 將陣列迭代出來的值指派給th.innerText設定文字內容
+                th.innerText = item;
+                // 將動態生成的tr標籤內加入th
+                theadTR.append(th);
+            });
+            // 把forEach後的theadTR加入thead內
+            thead.append(theadTR);
+            //把製作好的thead加入table內
+            table.append(thead);
+            //把製作好的table加入container內
+            container.append(table);
+        }
+
+        function objectToArray() {
+            //將data陣列內的每筆Object 轉 2D Array
+            marketingShare.data.forEach(item => {
+                // 將每個迭代出來的物件使用Object.values()
+                // 提取物件中所有可枚舉屬性的值，並返回這些值所組成的陣列
+                let values = Object.values(item);
+                //查看console的值
+                console.log(values);
+                // 空陣列加入迭代後的物件轉陣列 =2DArray
+                marketingShareArray.push(values);
+            });
+        }
+
+        // 動態創建table>Tbody內的tr與td(參數傳入陣列)
+        function CreateTbody(data) {
+            // 將傳入的陣列進行forEach迭代
+            data.forEach(item => {
+                // 創建<tr>標籤指派給TbodyTR變數
+                let TbodyTR = document.createElement("tr");
+                // 陣列迭代出來的物件再次進行迭代
+                item.forEach(item => {
+                    // 創建<td>標籤指派給td變數
+                    let td = document.createElement("td");
+                    // 將物件迭代出來的值指派給td.innerText設定文字內容
+                    td.innerText = item;
+                    // 將製作好的td加入TbodyTR
+                    TbodyTR.append(td);
+                });
+                // 將製作好的TbodyTR加入tbody
+                tbody.append(TbodyTR);
+                // 將製作好的tbody加入至table(這邊table已加入至container)
+                table.append(tbody);
+            })
+        }
+
+
+
+
+
+        //轉換現有的資料結構:物件屬性 轉 陣列
+        //Ratio=>data,  Name=>companies
+        function createArrayData() {
+            // 0.forEach()
+            marketingShare.data.forEach(item => {
+                companies.push(item.Name);
+                data.push(item.Ratio);
+            })
+            // 1.for
+            // for (let i = 0; i < marketingShare.data.length; i++) {
+            //     console.log(i);
+            //     companies[i] = marketingShare.data[i].Name;
+            //     data[i] = marketingShare.data[i].Ratio;
+            // }
+
+            //2.for in - 迭代出來是index
+            // for in 不需要length
+            // for (let j in marketingShare.data) {
+            //     console.log(j);
+            //     companies[j] = marketingShare.data[j].Name;
+            //     data[j] = marketingShare.data[j].Ratio;
+            // }
+
+            // 3.for of 迭代出來是-item
+            // for (let k of marketingShare.data) {
+            //     companies[k.Ranking-1] = marketingShare.data[k.Ranking-1].Name;
+            //     data[k.Ranking-1] = marketingShare.data[k.Ranking-1].Ratio;
+            // }
+
+            // 4.for of 迭代出來是-item 
+            // for (let k of marketingShare.data) {
+            //     companies.push(k.Name);
+            //     data.push(k.Ratio);
+            // }
+
+            // 5.forEach()
+            // marketingShare.data.forEach((item, index) => {
+            //         companies[index] = marketingShare.data[index].Name;
+            //         data[index] = marketingShare.data[index].Ratio;
+            // })
+
+        }
+    </script>
+
+
+
+
+    <script>
+        //繪製餅圖: 參數1= type:
+        // 第二個參數為公司陣列(X軸), 第三個參數為資料陣列(Y軸)
+        //Pie Chart圓餅圖
+        // function drawPieChart(chartType, companyArray, dataArray) {
+        function drawChart(chartType, companyArray, dataArray) {
+            // 抓取<canvas id="mkShare"></canvas>繪圖標籤
+            let ctxPie = document.getElementById("mkShare");
+            var pieChart = new Chart(ctxPie, {
+                //type=傳入的第一個參數
+                type: chartType,
+                data: {
+                    //labels=傳入的第二個參數
+                    labels: companyArray,
+                    datasets: [{
+                        //data=傳入的第三個參數
+                        data: dataArray,
+                        //自定義每塊資料顏色
+                        backgroundColor: [
+                            'rgb(255, 99, 132)',
+                            'rgb(255,75,50)',
+                            'rgb(255, 205, 86)',
+                            'rgb(75, 192, 192)',
+                            'rgb(54, 162, 235)',
+                            'rgb(153, 102, 255)',
+                            'rgb(201, 203, 207)',
+                            'rgb(255, 138, 64)',
+                            'rgb(142, 65, 64)',
+                            'rgb(59, 72, 64)'
+                        ]
+                    }],
+                },
+                options: {
+                    responsive: true,
+                    title: {
+                        display: true,
+                        fontSize: 26,
+                        text: '2021年全球晶圓代工市佔率%'
+                    },
+                    tooltips: {
+                        mode: 'point',
+                        intersect: true,
+                    },
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            fontColor: 'black',
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
