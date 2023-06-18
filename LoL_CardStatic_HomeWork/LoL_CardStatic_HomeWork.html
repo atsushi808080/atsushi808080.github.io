@@ -45,7 +45,7 @@
         }
 
         .card:hover img {
-            transform: scale(1.2);
+            transform: scale(1.7);
             transition: transform 0.5s;
         }
 
@@ -67,6 +67,7 @@
             background-color: cornflowerblue;
         }
 
+
         ol {
             margin: auto;
         }
@@ -87,7 +88,7 @@
         }
 
         td:hover img {
-            transform: scale(1.2);
+            transform: scale(1.5);
             transition: transform 0.5s;
         }
 
@@ -98,6 +99,10 @@
 
         td {
             overflow: hidden;
+        }
+        .table-hover {
+            width: 70%;
+            margin: auto;
         }
     </style>
 </head>
@@ -2198,7 +2203,6 @@
     <script>
 
         let heroArray = [];
-        let container;
         let btnCreateHeroArray, btnListHero, btnTableHero;
 
         window.onload = function () {
