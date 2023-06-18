@@ -2272,11 +2272,11 @@
                 let table = document.createElement("table");
                 let thead = document.createElement("thead");
                 let tbody = document.createElement("tbody");
-                let Title = ["英雄", "簡介", "外觀"];
+                let title = ["英雄", "簡介", "外觀"];
                 let tr = document.createElement("tr");
                 table.setAttribute("class", "table table-bordered table-striped table-secondary  table-hover");
                 
-                for(item of Title) {
+                for(item of title) {
                     let th = document.createElement("th");
                     th.innerText = item;
                     tr.append(th);
