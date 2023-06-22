@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            width: 300px;
+            margin: auto;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <button id="start">遊戲開始</button>
+        <button id="answer">答案</button>
+        <button id="restart">重新遊戲</button><br><br>
+        <span id="displayAnswer"></span><br>
+        <input type="text" id="input"><span> </span>
+        <button id="send">確認</button><br><br>
+        <button id="numberButton1">1</button>
+        <button id="numberButton2">2</button>
+        <button id="numberButton3">3</button><br><br>
+        <button id="numberButton4">4</button>
+        <button id="numberButton5">5</button>
+        <button id="numberButton6">6</button><br><br>
+        <button id="numberButton7">7</button>
+        <button id="numberButton8">8</button>
+        <button id="numberButton9">9</button><br><br>
+        <button id="numberButton0">0</button><br><br>
+
+        <!-- <button>提示(剩餘次數:)</button> -->
+        <div id="box"></div>
+    </div>
+
+
+
+
+    <script>
+        let randomNumberArray = [];
+        let numberArray = [];
+        let AB = {
+            A: 0,
+            B: 0
+        };
+        let A = 0;
+        let B = 0;
+
+        window.onload = function () {
+            let start = document.getElementById("start");
+            let answer = document.getElementById("answer");
+            let restart = document.getElementById("restart");
+            let displayAnswer = document.getElementById("displayAnswer");
+            let input = document.getElementById("input");
+            let send = document.getElementById("send");
+            let box = document.getElementById("box");
+            // let numberButton = document.querySelectorAll(".numberButton");
+            let numberButton = document.querySelectorAll("numberButton");
+            answer.disabled = true;
+            send.disabled = true;
+            input.disabled = true;
+            disableButtons();
+
+
+            function buttonClickHandler(event) {
+                const buttonValue = event.target.textContent;
+                // console.log("按下的按鈕值：" + buttonValue);
+                input.value += buttonValue;
+            }
+
+            for (let i = 0; i <= 9; i++) {
+                const button = document.getElementById("numberButton" + i);
+                button.addEventListener("click", buttonClickHandler);
+            }
+
+
+            function disableButtons() {
+                for (let i = 0; i <= 9; i++) {
+                    const button = document.getElementById("numberButton" + i);
+                    button.disabled = true;
+                }
+            }
+
+            function disableButtonsOpen() {
+                for (let i = 0; i <= 9; i++) {
+                    const button = document.getElementById("numberButton" + i);
+                    button.disabled = false;
+                }
+            }
+
+
+            start.addEventListener('click', function () {
+                start.disabled = true;
+                createRandom();
+                answer.disabled = false;
+                send.disabled = false;
+                input.disabled = false;
+                disableButtonsOpen();
+            });
+            answer.addEventListener('click', function () {
+                // answer.disabled = true;
+                displayAnswer.innerText = "";
+                randomNumberArray.forEach(item => {
+
+                    displayAnswer.innerText += "" + item;
+                });
+            });
+            restart.addEventListener('click', function () {
+                start.disabled = false;
+                displayAnswer.innerText = "";
+                answer.disabled = true;
+                send.disabled = true;
+                input.disabled = true;
+                randomNumberArray = [];
+                
+
+            });
+
+            send.addEventListener('click', function () {
+                displayAnswer.innerText = "";
+                const inputValue = input.value;
+                let itemArray = [];
+                if (inputValue.length === 4) {
+                    inputValue.split("").forEach(item => {
+                        if (isNaN(item) || item < 0 || item > 9 || itemArray.includes(item)) {
+                            displayAnswer.innerText = "輸入錯誤";
+                            return;
+                        }
+                        else {
+
+                            itemArray.push(item);
+                        }
+                    });
+                }
+                else {
+                    displayAnswer.innerText = "輸入錯誤";
+
+                }
+                if (itemArray.length === 4) {
+                    numberArray = [];
+                    itemArray.forEach(item => {
+                        numberArray.push(parseInt(item));
+                    });
+                    console.log(numberArray);
+                    // console.log(randomNumberArray.includes(numberArray[0]));
+                    // console.log(AB.B += 1)
+                    AB.A = 0;
+                    AB.B = 0;
+                    for (let i = 0; i < numberArray.length; i++) {
+                        if (randomNumberArray.includes(numberArray[i]) && randomNumberArray[i] !== numberArray[i]) {
+                            AB.B += 1;
+
+                        }
+                        if (randomNumberArray.includes(numberArray[i]) && randomNumberArray[i] === numberArray[i]) {
+                            AB.A += 1;
+                        }
+                    }
+                    box.innerHTML += `<div>${AB.A}A${AB.B}B</div>`;
+                    console.log(AB.A, AB.B);
+                    if (AB.A === 4 & AB.B === 0) {
+                        displayAnswer.innerText = "通關";
+                        start.disabled = true;
+                        answer.disabled = true;
+                        send.disabled = true;
+                        input.disabled = true;
+                        box.innerHTML = "";
+                        disableButtons();
+                    }
+                }
+
+
+                input.value = "";
+
+            });
+
+
+            function createRandom() {
+                while (randomNumberArray.length < 4) {
+                    let randomNum = Math.floor(Math.random() * 10)
+                    if (!randomNumberArray.includes(randomNum)) {
+                        randomNumberArray.push(randomNum);
+                    }
+                }
+            }
+
+
+        };
+    </script>
+</body>
+
+</html>
