@@ -11,6 +11,12 @@
             margin: auto;
             text-align: center;
         }
+        .wrap{
+            display: flex;
+            justify-content: center;
+        }
+
+
     </style>
 </head>
 
@@ -35,7 +41,14 @@
         <button id="numberButton0">0</button><br><br>
 
         <!-- <button>提示(剩餘次數:)</button> -->
-        <div id="box"></div>
+        <div class="wrap">
+
+            <div id="inputText"></div>
+            <div id="box">
+        </div>
+            
+        </div>
+        
     </div>
 
 
@@ -59,6 +72,7 @@
             let input = document.getElementById("input");
             let send = document.getElementById("send");
             let box = document.getElementById("box");
+            let inputText = document.getElementById("inputText");
             // let numberButton = document.querySelectorAll(".numberButton");
             let numberButton = document.querySelectorAll("numberButton");
             answer.disabled = true;
@@ -117,18 +131,24 @@
                 send.disabled = true;
                 input.disabled = true;
                 randomNumberArray = [];
-                
+                box.innerHTML = "";
+                inputText.innerHTML = "";
+
+                disableButtons();
 
             });
 
             send.addEventListener('click', function () {
                 displayAnswer.innerText = "";
                 const inputValue = input.value;
+                // inputText.innerHTML += `<div>${input.value}---</div>`;
+
                 let itemArray = [];
                 if (inputValue.length === 4) {
                     inputValue.split("").forEach(item => {
                         if (isNaN(item) || item < 0 || item > 9 || itemArray.includes(item)) {
                             displayAnswer.innerText = "輸入錯誤";
+                            // inputText.innerHTML += `<div>${input.value}---輸入錯誤</div>`;
                             return;
                         }
                         else {
@@ -139,6 +159,8 @@
                 }
                 else {
                     displayAnswer.innerText = "輸入錯誤";
+                    // inputText.innerHTML += `<div>${input.value}---輸入錯誤</div>`;
+                    return;
 
                 }
                 if (itemArray.length === 4) {
@@ -160,7 +182,7 @@
                             AB.A += 1;
                         }
                     }
-                    box.innerHTML += `<div>${AB.A}A${AB.B}B</div>`;
+                    box.innerHTML += `<div>${input.value}---${AB.A}A${AB.B}B</div>`;
                     console.log(AB.A, AB.B);
                     if (AB.A === 4 & AB.B === 0) {
                         displayAnswer.innerText = "通關";
@@ -168,7 +190,6 @@
                         answer.disabled = true;
                         send.disabled = true;
                         input.disabled = true;
-                        box.innerHTML = "";
                         disableButtons();
                     }
                 }
