@@ -62,6 +62,7 @@
             B: 0
         };
         let hintNumber1;
+        let count = 0;
 
         window.onload = function () {
             let start = document.getElementById("start");
@@ -114,6 +115,7 @@
             });
 
             start.addEventListener('click', function () {
+                
                 start.disabled = true;
                 createRandom();
                 answer.disabled = false;
@@ -170,6 +172,7 @@
 
                 }
                 if (itemArray.length === 4) {
+                    count++;
                     numberArray = [];
                     itemArray.forEach(item => {
                         numberArray.push(parseInt(item));
@@ -182,20 +185,22 @@
                     for (let i = 0; i < numberArray.length; i++) {
                         if (randomNumberArray.includes(numberArray[i]) && randomNumberArray[i] !== numberArray[i]) {
                             AB.B += 1;
-
                         }
                         if (randomNumberArray.includes(numberArray[i]) && randomNumberArray[i] === numberArray[i]) {
                             AB.A += 1;
                         }
+
                     }
                     box.innerHTML += `<div>${input.value}---${AB.A}A${AB.B}B</div>`;
                     console.log(AB.A, AB.B);
                     if (AB.A === 4 & AB.B === 0) {
                         displayAnswer.innerText = "通關";
+                        box.innerHTML += `<div>一共猜了${count}次</div>`;
                         start.disabled = true;
                         answer.disabled = true;
                         send.disabled = true;
                         input.disabled = true;
+                        hint.disabled = true;
                         disableButtons();
                     }
                 }
