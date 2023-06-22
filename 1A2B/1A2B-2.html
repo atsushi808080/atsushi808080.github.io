@@ -11,12 +11,11 @@
             margin: auto;
             text-align: center;
         }
-        .wrap{
+
+        .wrap {
             display: flex;
             justify-content: center;
         }
-
-
     </style>
 </head>
 
@@ -25,7 +24,8 @@
 
         <button id="start">遊戲開始</button>
         <button id="answer">答案</button>
-        <button id="restart">重新遊戲</button><br><br>
+        <button id="restart">重新遊戲</button>
+        <button id="hint">提示</button><br><br>
         <span id="displayAnswer"></span><br>
         <input type="text" id="input"><span> </span>
         <button id="send">確認</button><br><br>
@@ -45,10 +45,10 @@
 
             <div id="inputText"></div>
             <div id="box">
+            </div>
+
         </div>
-            
-        </div>
-        
+
     </div>
 
 
@@ -61,8 +61,7 @@
             A: 0,
             B: 0
         };
-        let A = 0;
-        let B = 0;
+        let hintNumber1;
 
         window.onload = function () {
             let start = document.getElementById("start");
@@ -75,9 +74,11 @@
             let inputText = document.getElementById("inputText");
             // let numberButton = document.querySelectorAll(".numberButton");
             let numberButton = document.querySelectorAll("numberButton");
+            let hint = document.getElementById("hint");
             answer.disabled = true;
             send.disabled = true;
             input.disabled = true;
+            hint.disabled = true;
             disableButtons();
 
 
@@ -107,6 +108,10 @@
                 }
             }
 
+            hint.addEventListener('click', function () {
+                let num = hintNumber();
+                displayAnswer.innerText = `可能有${num}`;
+            });
 
             start.addEventListener('click', function () {
                 start.disabled = true;
@@ -114,6 +119,7 @@
                 answer.disabled = false;
                 send.disabled = false;
                 input.disabled = false;
+                hint.disabled = false;
                 disableButtonsOpen();
             });
             answer.addEventListener('click', function () {
@@ -209,8 +215,15 @@
                 }
             }
 
+            function hintNumber() {
+                let hint1 = Math.floor(Math.random() * 4)
+                hint.disabled=true;
+                return randomNumberArray[hint1];
 
+
+            }
         };
+
     </script>
 </body>
 
