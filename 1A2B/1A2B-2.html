@@ -5,9 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <style>
         .container {
-            width: 300px;
+            /* width: 30%; */
             margin: auto;
             text-align: center;
         }
@@ -16,31 +18,175 @@
             display: flex;
             justify-content: center;
         }
+
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            /* max-width: 500px; */
+            width: 50%;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            text-align: center;
+            margin-left: 20px;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #8d8989;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        button:hover {
+            background-color: #282828;
+        }
+
+        #displayAnswer {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            margin-top: 20px;
+        }
+
+        #input {
+            padding: 8px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        #send {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left: 5px;
+        }
+
+        #send:hover {
+            /* background-color: #0b7dda; */
+        }
+
+        .number-button-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .number-button {
+            width: 40px;
+            height: 40px;
+            /* background-color: #d617d3; */
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            margin: 5px;
+            font-size: 20px;
+        }
+
+        .number-button:hover {
+            /* background-color: #0e55e3; */
+        }
+
+        #inputText {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        #box {
+            width: 80%;
+            /* height: 500px; */
+            background-color: #ccc;
+            border-radius: 10px;
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+        }
+
+        #hint {
+            margin-left: 15px;
+        }
+
+        .flex {
+            width: 100%;
+            display: flex;
+            justify-self: center;
+
+        }
+
+        .wrap {
+            width: 50%;
+        }
+
+        h1 {
+            font-size: 40px;
+            margin: 0;
+            color: #696666;
+            font-weight: 900;
+        }
+
+        #remaining {
+            font-weight: 900;
+        }
     </style>
 </head>
 
 <body>
-    <div class="container">
+    <div class="flex">
 
-        <button id="start">遊戲開始</button>
-        <button id="answer">答案</button>
-        <button id="restart">重新開始</button>
-        <button id="hint">提示</button><br><br>
-        <span id="displayAnswer"></span><br>
-        <input type="text" id="input"><span> </span>
-        <button id="send">Enter</button><br><br>
-        <button id="numberButton1">1</button>
-        <button id="numberButton2">2</button>
-        <button id="numberButton3">3</button><br><br>
-        <button id="numberButton4">4</button>
-        <button id="numberButton5">5</button>
-        <button id="numberButton6">6</button><br><br>
-        <button id="numberButton7">7</button>
-        <button id="numberButton8">8</button>
-        <button id="numberButton9">9</button><br><br>
-        <button id="numberButton0">0</button><br><br>
+        <div class="container">
+            <h1>1A2B GAME</h1>
+            <button id="start">開始遊戲</button>
+            <button id="answer">答案</button>
+            <button id="restart">重新開始</button>
+            <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                data-bs-custom-class="custom-tooltip" data-bs-title="玩家需要猜一個由電腦隨機生成的4位數字，並根據猜測結果得到提示。提示中的「A」表示猜測中數字和位置都正確的數量，「B」表示猜測中數字正確但位置不正確的數量。">
+                遊戲說明
+            </button><br><br>
 
-        <!-- <button>提示(剩餘次數:)</button> -->
+            <span id="displayAnswer"></span><br>
+            <input type="text" id="input"><span> </span>
+            <button id="send">Enter</button><br><br>
+            <button id="numberButton1">1</button>
+            <button id="numberButton2">2</button>
+            <button id="numberButton3">3</button><br>
+            <button id="numberButton4">4</button>
+            <button id="numberButton5">5</button>
+            <button id="numberButton6">6</button><br>
+            <button id="numberButton7">7</button>
+            <button id="numberButton8">8</button>
+            <button id="numberButton9">9</button><br>
+            <button id="hint">hint</button>
+            <button id="numberButton0">0</button>
+            <button id="clear">clear</button>
+            <div id="remaining">剩餘次數：</div><br>
+
+
+        </div>
         <div class="wrap">
 
             <div id="inputText"></div>
@@ -51,10 +197,14 @@
 
     </div>
 
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
 
 
     <script>
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
         let randomNumberArray = [];
         let numberArray = [];
         let AB = {
@@ -64,8 +214,10 @@
         let hintNumber1;
         let count = 0;
         let buttonId;
-
+        let remainingNum = 15;
+        let hintCoumt = 1; 
         window.onload = function () {
+
             let start = document.getElementById("start");
             let answer = document.getElementById("answer");
             let restart = document.getElementById("restart");
@@ -77,16 +229,22 @@
             // let numberButton = document.querySelectorAll(".numberButton");
             let numberButton = document.querySelectorAll("numberButton");
             let hint = document.getElementById("hint");
+            let clear = document.getElementById("clear");
+            let remaining = document.getElementById("remaining");
             answer.disabled = true;
             send.disabled = true;
             input.disabled = true;
             hint.disabled = true;
             disableButtons();
+            displayAnswer.innerText = "請點擊<開始遊戲>按鈕";
 
+
+            if (start.disabled === false) {
+                restart.disabled = true;
+            }
 
             function buttonClickHandler(event) {
                 const buttonValue = event.target.textContent;
-                // console.log("按下的按鈕值：" + buttonValue);
                 input.value += buttonValue;
             }
 
@@ -101,6 +259,7 @@
                     const button = document.getElementById("numberButton" + i);
                     button.disabled = true;
                 }
+                clear.disabled = true;
             }
 
             function disableButtonsOpen() {
@@ -108,26 +267,41 @@
                     const button = document.getElementById("numberButton" + i);
                     button.disabled = false;
                 }
+                clear.disabled = false;
+
             }
+            clear.addEventListener('click', function () {
+                input.value = "";
+            });
 
             hint.addEventListener('click', function () {
-                let num = hintNumber();
-                displayAnswer.innerText = `可能有${num}`;
+                if(hintCoumt===1){
+                    let num = hintNumber();
+                    displayAnswer.innerText = `可能有${num}`;
+                }
+                else{
+                    displayAnswer.innerText = `只有一次提示`;
+                }
             });
 
             start.addEventListener('click', function () {
-
+                restart.disabled = false;
                 start.disabled = true;
                 createRandom();
                 answer.disabled = false;
                 send.disabled = false;
                 input.disabled = false;
                 hint.disabled = false;
+                displayAnswer.innerText = "遊戲已開始";
+                remainingNum = 15;
+                hintCoumt = 1;
+                remaining.innerText = `剩餘次數：${remainingNum}`;
+
                 disableButtonsOpen();
             });
             answer.addEventListener('click', function () {
                 // answer.disabled = true;
-                displayAnswer.innerText = "";
+                displayAnswer.innerText = "答案是：";
                 randomNumberArray.forEach(item => {
 
                     displayAnswer.innerText += "" + item;
@@ -135,8 +309,12 @@
             });
             restart.addEventListener('click', function () {
                 count = 0;
+                hintCoumt = 1;
                 console.log(count);
                 start.disabled = false;
+                if (start.disabled === false) {
+                    restart.disabled = true;
+                }
                 displayAnswer.innerText = "";
                 answer.disabled = true;
                 send.disabled = true;
@@ -145,6 +323,9 @@
                 randomNumberArray = [];
                 box.innerHTML = "";
                 inputText.innerHTML = "";
+                displayAnswer.innerText = "請點擊<開始遊戲>按鈕";
+                remainingNum = 15;
+                remaining.innerText = `剩餘次數：${remainingNum}`;
 
                 disableButtons();
 
@@ -162,9 +343,14 @@
             send.addEventListener('click', function () {
                 // buttonId = event.target.id;
                 // if (buttonId === "send") {
-                    // event.preventDefault();
-                    enter1();
-                    console.log(count);
+                // event.preventDefault();
+                if (input.value === "") {
+                    displayAnswer.innerText = "沒有輸入";
+                    return;
+
+                }
+                enter1();
+                console.log(count);
                 // }
             });
 
@@ -176,9 +362,13 @@
                 let itemArray = [];
                 if (inputValue.length === 4) {
                     inputValue.split("").forEach(item => {
-                        if (isNaN(item) || item < 0 || item > 9 || itemArray.includes(item)) {
-                            displayAnswer.innerText = "輸入錯誤";
+                        if (isNaN(item) || item < 0 || item > 9) {
+                            displayAnswer.innerText = "輸入錯誤，不可輸入非數字";
                             // inputText.innerHTML += `<div>${input.value}---輸入錯誤</div>`;
+                            return;
+                        }
+                        else if (itemArray.includes(item)) {
+                            displayAnswer.innerText = "數字不可重複";
                             return;
                         }
                         else {
@@ -188,13 +378,14 @@
                     });
                 }
                 else {
-                    displayAnswer.innerText = "輸入錯誤";
+                    displayAnswer.innerText = "輸入錯誤，請輸入4位數字";
                     // inputText.innerHTML += `<div>${input.value}---輸入錯誤</div>`;
                     return;
 
                 }
                 if (itemArray.length === 4) {
                     count++;
+                    remainingNum--;
                     numberArray = [];
                     itemArray.forEach(item => {
                         numberArray.push(parseInt(item));
@@ -213,10 +404,24 @@
                         }
 
                     }
-                    box.innerHTML += `<div>${input.value}---${AB.A}A${AB.B}B</div>`;
+                    box.innerHTML += `<div style="font-size:25px;"><span style="font-size:25px;color:white;background-color:black;">第${count}次猜的結果<${input.value}></span>：<span style="background-color:red;font-size:25px;color:white;">${AB.A}A${AB.B}B</span></div>`;
+                    input.value = "";
                     console.log(AB.A, AB.B);
+                    remaining.innerText = `剩餘次數：${remainingNum}`;
+                    if (remainingNum === 0) {
+                        displayAnswer.innerText = `遊戲失敗，重新開始`;
+                        input.value = "";
+                        start.disabled = true;
+                        answer.disabled = true;
+                        send.disabled = true;
+                        input.disabled = true;
+                        hint.disabled = true;
+                        disableButtons();
+                        return;
+                    }
                     if (AB.A === 4 & AB.B === 0) {
                         displayAnswer.innerText = `通關!一共猜了${count}次`;
+                        input.value = "";
                         // box.innerHTML += `<div>一共猜了${count}次</div>`;
                         start.disabled = true;
                         answer.disabled = true;
@@ -228,7 +433,7 @@
                 }
 
 
-                input.value = "";
+                // input.value = "";
 
             }
 
@@ -245,13 +450,16 @@
             }
 
             function hintNumber() {
+                hintCoumt--;
                 let hint1 = Math.floor(Math.random() * 4)
-                hint.disabled = true;
                 return randomNumberArray[hint1];
 
 
             }
         };
+
+
+
 
     </script>
 </body>
