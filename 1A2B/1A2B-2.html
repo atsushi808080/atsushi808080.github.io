@@ -85,7 +85,7 @@
         }
 
         #send:hover {
-            /* background-color: #0b7dda; */
+            background-color: #0b7dda;
         }
 
         .number-button-container {
@@ -107,9 +107,6 @@
             font-size: 20px;
         }
 
-        .number-button:hover {
-            /* background-color: #0e55e3; */
-        }
 
         #inputText {
             font-size: 18px;
@@ -152,6 +149,41 @@
         #remaining {
             font-weight: 900;
         }
+
+
+        /* #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            z-index: 9999;
+        }
+
+        #loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #333333;
+            border-top-color: #ffffff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        #loading-percentage {
+            font-size: 24px;
+            margin-top: 10px;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        } */
     </style>
 </head>
 
@@ -164,7 +196,8 @@
             <button id="answer">答案</button>
             <button id="restart">重新開始</button>
             <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                data-bs-custom-class="custom-tooltip" data-bs-title="玩家需要猜一個由電腦隨機生成的4位數字，並根據猜測結果得到提示。提示中的「A」表示猜測中數字和位置都正確的數量，「B」表示猜測中數字正確但位置不正確的數量，直到顯示「4A」即遊戲通關。">
+                data-bs-custom-class="custom-tooltip"
+                data-bs-title="玩家需要猜一個由電腦隨機生成的4位數字，並根據猜測結果得到提示。提示中的「A」表示猜測中數字和位置都正確的數量，「B」表示猜測中數字正確但位置不正確的數量，直到顯示「4A」即遊戲通關。">
                 遊戲說明
             </button><br><br>
 
@@ -197,6 +230,11 @@
 
     </div>
 
+
+    <!-- <div id="loading-screen">
+        <div id="loading-spinner"></div>
+        <div id="loading-percentage">0%</div>
+    </div> -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
         crossorigin="anonymous"></script>
@@ -215,9 +253,8 @@
         let count = 0;
         let buttonId;
         let remainingNum = 15;
-        let hintCoumt = 1; 
+        let hintCoumt = 1;
         window.onload = function () {
-
             let start = document.getElementById("start");
             let answer = document.getElementById("answer");
             let restart = document.getElementById("restart");
@@ -237,6 +274,19 @@
             hint.disabled = true;
             disableButtons();
             displayAnswer.innerText = "請點擊<開始遊戲>按鈕";
+
+
+            // let percentageElement = document.getElementById("loading-percentage");
+            // let progress = 0;
+            // let interval = setInterval(function () {
+            //     progress += 1;
+            //     percentageElement.textContent = progress + "%";
+            //     if (progress >= 100) {
+            //         clearInterval(interval);
+            //         let loadingScreen = document.getElementById("loading-screen");
+            //         loadingScreen.style.display = "none";
+            //     }
+            // }, 35);
 
 
             if (start.disabled === false) {
@@ -275,11 +325,11 @@
             });
 
             hint.addEventListener('click', function () {
-                if(hintCoumt===1){
+                if (hintCoumt === 1) {
                     let num = hintNumber();
                     displayAnswer.innerText = `可能有${num}`;
                 }
-                else{
+                else {
                     displayAnswer.innerText = `只有一次提示`;
                 }
             });
@@ -322,9 +372,10 @@
                 hint.disabled = true;
                 randomNumberArray = [];
                 box.innerHTML = "";
+                input.value = "";
                 inputText.innerHTML = "";
                 displayAnswer.innerText = "請點擊<開始遊戲>按鈕";
-                remainingNum = 15;
+                remainingNum = "";
                 remaining.innerText = `剩餘次數：${remainingNum}`;
 
                 disableButtons();
@@ -408,17 +459,7 @@
                     input.value = "";
                     console.log(AB.A, AB.B);
                     remaining.innerText = `剩餘次數：${remainingNum}`;
-                    if (remainingNum === 0) {
-                        displayAnswer.innerText = `遊戲失敗，重新開始`;
-                        input.value = "";
-                        start.disabled = true;
-                        answer.disabled = true;
-                        send.disabled = true;
-                        input.disabled = true;
-                        hint.disabled = true;
-                        disableButtons();
-                        return;
-                    }
+
                     if (AB.A === 4 & AB.B === 0) {
                         displayAnswer.innerText = `通關!一共猜了${count}次`;
                         input.value = "";
@@ -429,6 +470,18 @@
                         input.disabled = true;
                         hint.disabled = true;
                         disableButtons();
+                        return;
+                    }
+                    else if (remainingNum === 0) {
+                        displayAnswer.innerText = `遊戲失敗，重新開始`;
+                        input.value = "";
+                        start.disabled = true;
+                        answer.disabled = true;
+                        send.disabled = true;
+                        input.disabled = true;
+                        hint.disabled = true;
+                        disableButtons();
+                        return;
                     }
                 }
 
