@@ -253,7 +253,7 @@
         let count = 0;
         let buttonId;
         let remainingNum = 15;
-        let hintCoumt = 1;
+        let hintCount = 1;
         window.onload = function () {
             let start = document.getElementById("start");
             let answer = document.getElementById("answer");
@@ -503,7 +503,7 @@
             }
 
             function hintNumber() {
-                hintCoumt--;
+                hintCount--;
                 let hint1 = Math.floor(Math.random() * 4)
                 return randomNumberArray[hint1];
 

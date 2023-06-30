@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./bootstrap.css">
+</head>
+<div id="displayColor">顏色:</div>
+<div id="displayStorage">儲存容量:</div>
+<div id="displayNetwork">連線能力:</div>
+<div id="displayPrice">價格:</div>
+<div class="card justify-content-center" style="width: 300px;">
+    <img id="displayImg" src="./blue.jpg" class="card-img-top img-fluid" alt="...">
+</div>
+<br>
+<button class="btn btn-dark buttonColor" id="blue" value="blue.jpg">藍色</button>
+<button class="btn btn-dark buttonColor" id="gray" value="gray.jpg">太空灰色</button>
+<button class="btn btn-dark buttonColor" id="pink" value="pink.jpg">粉紅色</button>
+<button class="btn btn-dark buttonColor" id="purple" value="purple.jpg">紫色</button>
+<button class="btn btn-dark buttonColor" id="starlight" value="starlight.jpg">星光色</button>
+<br>
+<br>
+<button class="btn btn-dark buttonStorage" id="storage64GB" value="64GB">64GB</button>
+<button class="btn btn-dark buttonStorage" id="storage256GB" value="256GB">256GB</button>
+<br>
+<br>
+<button class="btn btn-dark buttonNetwork" id="Wi-Fi" value="Wi-Fi">Wi-Fi</button>
+<button class="btn btn-dark buttonNetwork" id="Cellular" value="Cellular">Wi-Fi+行動網路</button>
+
+<body>
+    <script src="./bootstrap.js"></script>
+    <script>
+        const url = "https://raw.githubusercontent.com/atsushi808080/FileStorage/main/appleair2023";
+
+        let ipadArray = [];
+        let filterArray = [];
+        let _color, _colorUrl, _storage, _network, _network2;
+        const buttonColor = document.querySelectorAll(".buttonColor");
+        const buttonStorage = document.querySelectorAll(".buttonStorage");
+        const buttonNetwork = document.querySelectorAll(".buttonNetwork");
+        const displayColor = document.getElementById("displayColor");
+        const displayStorage = document.getElementById("displayStorage");
+        const displayNetwork = document.getElementById("displayNetwork");
+        const displayPrice = document.getElementById("displayPrice");
+        const displayImg = document.getElementById("displayImg");
+
+        buttonStorage.forEach(item => {
+            item.disabled = true;
+        })
+
+        buttonNetwork.forEach(item => {
+            item.disabled = true;
+        })
+
+
+        function clickColor() {
+            let clickedButton = event.target;
+
+            let count = 0;
+            clickedButton.disabled = true;
+            buttonColor.forEach(item => {
+                if (item !== clickedButton) {
+                    item.disabled = false;
+                }
+                if (item.disabled == true) {
+                    buttonStorage.forEach(item1 => {
+                        if (item1.disabled == false) {
+                            return;
+                        }
+                        if (item1.disabled == true) {
+                            count++;
+                        }
+                        if (count > 1) {
+                            buttonStorage.forEach(item => {
+                                item.disabled = false;
+                            });
+                        }
+
+                    })
+                }
+
+            });
+        }
+
+        function clickStorage() {
+            let clickedButton = event.target;
+
+            let count = 0;
+            clickedButton.disabled = true;
+            buttonStorage.forEach(item => {
+                if (item !== clickedButton) {
+                    item.disabled = false;
+                }
+                if (item.disabled == true) {
+                    buttonNetwork.forEach(item1 => {
+                        if (item1.disabled == false) {
+                            return;
+                        }
+                        if (item1.disabled == true) {
+                            count++;
+                        }
+                        if (count > 1) {
+                            buttonNetwork.forEach(item => {
+                                item.disabled = false;
+                            });
+                        }
+
+                    })
+                }
+            });
+        }
+
+        function clickNetwork() {
+            let clickedButton = event.target;
+
+            clickedButton.disabled = true;
+            buttonNetwork.forEach(item => {
+                if (item !== clickedButton) {
+                    item.disabled = false;
+                }
+            });
+        }
+
+        window.onload = () => {
+            getIpadJson();
+
+            buttonColor.forEach(item => {
+                item.addEventListener('click', event => {
+                    clickColor();
+                    _color = event.target.innerText;
+                    _colorUrl = event.target.value;
+                    displayColor.innerText = `顏色:${_color}`;
+                    console.log(_color);
+                    console.log(_colorUrl);
+                    _colorUrl = ipadArray.filter(x => x.picture == _colorUrl);
+                    console.log(_colorUrl)
+                    displayImg.src = `./${_colorUrl[0].picture}`;
+                    findIpads();
+
+                })
+            })
+
+
+            buttonStorage.forEach(item => {
+                item.addEventListener('click', event => {
+                    clickStorage();
+                    _storage = event.target.innerText;
+                    displayStorage.innerText = `儲存容量:${_storage}`;
+                    console.log(_storage)
+                    findIpads()
+                })
+            })
+
+            buttonNetwork.forEach(item => {
+                item.addEventListener('click', event => {
+                    clickNetwork();
+                    _network = event.target.value;
+                    _network2 = event.target.innerText;
+                    displayNetwork.innerText = `連線能力:${_network2}`;
+                    console.log(_network)
+                    findIpads()
+                })
+            })
+
+
+        };
+
+        function getIpadJson() {
+            let xhr = new XMLHttpRequest();
+            xhr.onload = function () {
+                ipadArray = JSON.parse(this.responseText);
+            };
+            xhr.open("GET", url);
+            xhr.send();
+        }
+
+        function findIpads() {
+            if (typeof _color !== 'string' || typeof _storage !== 'string' || typeof _network !== 'string') {
+                return;
+            }
+            console.log("OK");
+            filterArray = ipadArray.filter(x => x.color == _color && x.storage == _storage && x.network == _network);
+            console.log(filterArray[0])
+            displayPrice.innerText = `價格:${filterArray[0].price}`;
+        }
+
+
+    </script>
+</body>
+
+</html>
