@@ -16,11 +16,13 @@
 
         .date-area {
             cursor: pointer;
+            
         }
 
         .date-area>div:hover {
             font-weight: 900;
-            background-color: #eee;
+            background-color: rgb(13,202,240);
+            font-size: 18px;
         }
     </style>
 </head>
@@ -90,7 +92,7 @@
                 let week_zh = week.toLocaleString('zh', { weekday: 'long' });
                 let date = document.createElement('div')
                 date.innerText = week_zh;
-                date.classList.add('border', 'text-center')
+                date.classList.add('border', 'text-center','border-primary-subtle')
                 weeks.append(date)
             }
 
@@ -137,7 +139,7 @@
 
                 //迴圈 創建35或42個div節點並加入class="border col"
                 const dateDom = document.createElement('div')
-                dateDom.classList.add('border', 'col')
+                dateDom.classList.add('border-primary-subtle', 'border', 'col')
 
 
                 //迴圈 創建35或42個span節點 並加入class="d-inline-block', 'w-100', 'text-center"
