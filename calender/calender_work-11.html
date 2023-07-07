@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <style>
+        .display>div {
+            height: 65px;
+            width: 14.2857143%;
+            flex: 0 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- DOM*4 -->
+        <h2 class="year-month-title">顯示:年/月</h2>
+        <button type="button" class="btn btn-outline-primary last-month-btn">上個月</button>
+        <button type="button" class="btn btn-outline-primary now-btn">現在</button>
+        <button type="button" class="btn btn-outline-primary next-month-btn">下個月</button>
+
+        <div class="row row-cols-7 g-0 mt-3 display" id="weeks">
+        </div>
+        <!-- DOM*1 -->
+        <div class="date-area row row-cols-7 g-0 display">
+            <!-- <div class="border col">span35or42</div> -->
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+
+    <script>
+        let currentYear, currentMonth, today
+        const yearMonthTitle = document.querySelector('.year-month-title')
+        const lastMonthBtn = document.querySelector('.last-month-btn')
+        const nowBtn = document.querySelector('.now-btn')
+        const nextMonthBtn = document.querySelector('.next-month-btn')
+        const dateArea = document.querySelector('.date-area')
+        const weeks = document.getElementById('weeks')
+
+        window.addEventListener('load', function (event) {
+            createWeeks()
+            initCalendar()
+        })
+
+
+        nowBtn.addEventListener('click', function (event) {
+            initCalendar()
+        })
+
+        lastMonthBtn.addEventListener('click', function (event) {
+            currentMonth--
+            if (currentMonth < 1) {
+                currentMonth = 12
+                currentYear--
+            }
+            changeYearMonthTitle(currentYear, currentMonth)
+            renderingCalendar()
+        })
+
+        nextMonthBtn.addEventListener('click', function (event) {
+            currentMonth++
+            if (currentMonth > 12) {
+                currentMonth = 1
+                currentYear++
+            }
+            changeYearMonthTitle(currentYear, currentMonth)
+            renderingCalendar()
+        })
+
+        function createWeeks() {
+            for (let i = 9; i <= 15; i++) {
+                let week = new Date(2023, 6, i)
+                let week_zh = week.toLocaleString('zh', { weekday: 'long' });
+                let date = document.createElement('div')
+                date.innerText = week_zh;
+                date.classList.add('border', 'text-center')
+                weeks.append(date)
+            }
+
+        }
+
+        function initCalendar() {
+            // const now = new Date()//now=當前日期物件=只在這個方法中使用
+            today = new Date() //today=初始化當前日期物件
+            currentYear = today.getFullYear()//抓取當前的年 ,型別:number
+            currentMonth = today.getMonth() + 1//抓取當前的月(顯示需+1) ,型別:number
+            changeYearMonthTitle(currentYear, currentMonth)//抓取當前的年與月顯示在h2標籤內容
+            renderingCalendar()//渲染畫面
+        }
+
+        function changeYearMonthTitle(year, month) {//參數年,月
+            yearMonthTitle.textContent = `${year} / ${month.toString().padStart(2, '0')}`//string方法:字串填充,不足2則補'0'
+        }
+
+        function renderingCalendar() {
+
+            //抓取當前年 當前月 1號 date物件 2023-6-1
+            const firstDateOfCurrentMonth = new Date(currentYear, currentMonth - 1, 1)
+
+            //抓取當前年 下個月 0代表上個月底的日期 =>抓取當前年 當前月 當前月的最後日期  2023-6-31
+            const lastDateOfCurrentMonth = new Date(currentYear, currentMonth, 0)
+
+            //start = 1- 當月1號的星期 0~6 = 1-6 = -5
+            let start = 1 - firstDateOfCurrentMonth.getDay()
+
+            //end= 當月的月底日期(31)+ 6-當月月底日期的星期(1) ===31+5=36
+            const end = lastDateOfCurrentMonth.getDate() + (6 - lastDateOfCurrentMonth.getDay())
+
+            //抓取div節點
+            const dateArea = document.querySelector('.date-area')
+            //清空div節點的內容
+            dateArea.innerHTML = ''
+
+
+            //從-5開始   -5小於等於36  -5加1   迭代35 OR 42次
+            for (start; start <= end; start++) {
+
+                // curr= 當前年 當前月 -5 = 當前年 上個月(6月) 25號 ==2023-5-25
+                const curr = new Date(currentYear, currentMonth - 1, start)
+
+                //迴圈 創建35或42個div節點並加入class="border col"
+                const dateDom = document.createElement('div')
+                dateDom.classList.add('border', 'col')
+
+
+                //迴圈 創建35或42個span節點 並加入class="d-inline-block', 'w-100', 'text-center"
+                const dateEl = document.createElement('span')
+                dateEl.classList.add('d-inline-block', 'w-100', 'text-center')
+
+
+                //如果 2023-5-25迭代過程===今日的2023-6-7 
+                if (curr.getFullYear() === today.getFullYear() &&
+                    curr.getMonth() === today.getMonth() &&
+                    curr.getDate() === today.getDate()) {
+                    //當日加入bootstrap樣式
+                    dateEl.classList.add('text-bg-info')
+                }
+
+                //span的內容設定為2023-5-(25) 到 2023 6-(31)   -5~36的迭代 = 42次  7*6=42的表格
+                dateEl.textContent = curr.getDate()
+
+                //span加入div節點
+                dateDom.append(dateEl)
+
+                //如果2023-(5)-25 +1 的日期迭代過程 不等於 當前的月2023-(6)-7 則div的class設定為字體灰色
+                if (curr.getMonth() + 1 !== currentMonth) {
+                    dateDom.classList.add('text-black-50')
+                }
+                dateArea.append(dateDom)
+            }
+        }
+    </script>
+</body>
+
+</html>
