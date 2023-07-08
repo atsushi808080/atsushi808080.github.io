@@ -105,7 +105,7 @@
       displayYearNonthTitle.innerText = `${year}-${new Date(0, month).toLocaleString('en', { month: 'long' })}`
     }
 
-
+    
     function createWeeks() {
       for (let i = 9; i <= 15; i++) {
         let week = new Date(2023, 6, i)
@@ -117,18 +117,17 @@
       }
     }
 
-    
     function renderingDate() {
-      let firstDate = new Date(currentYear, currentMonth, 1)
-      let lastDate = new Date(currentYear, displayMonth, 0)
+      let firstDay = new Date(currentYear, currentMonth, 1)
+      let endDate = new Date(currentYear, displayMonth, 0)
       //計算1號之前有幾天:1-(1號的星期0~6) = 比如等於-3加幾次等於0? == 4天
       //比如星期日=0 >> 1-0=1 代表沒有1號之前的天數
       //比如星期一=1 >> 1-1=0 代表 有1天是1號之前的天數
-      let start = 1 - firstDate.getDay()
+      let start = 1 - firstDay.getDay()
       //計算月底之後有幾天:比如31號是星期2 6-2=4天 +當月的總天數
-      let last = (6 - lastDate.getDay()) + lastDate.getDate()
+      let ending = (6 - endDate.getDay()) + endDate.getDate()
       displayDate.innerHTML = ''
-      for (start; start <= last; start++) {
+      for (start; start <= ending; start++) {
         let loopToday = new Date(currentYear, currentMonth, start)
 
         const divDOM = document.createElement('div')
