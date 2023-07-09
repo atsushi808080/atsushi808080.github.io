@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bootstrap demo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Wallpoet&display=swap" rel="stylesheet">
+  <style>
+    .background-transition {
+      transition: background-image .7s ease-in-out;
+    }
+
+    /* ========================== */
+    .create-date {
+      flex-basis: calc(100% / 7);
+      max-width: calc(100% / 7);
+      box-sizing: border-box;
+      height: 65px;
+      font-family: 'Rock Salt';
+    }
+
+    .create-date:hover {
+      background-color: rgb(13, 202, 240);
+      font-weight: 900;
+      cursor: pointer;
+      opacity: .7;
+    }
+
+    .week {
+      flex-basis: calc(100% / 7);
+      max-width: calc(100% / 7);
+      box-sizing: border-box;
+      font-family: 'Rock Salt';
+      color: violet;
+    }
+
+    .calendar {
+      color: blueviolet;
+      font-family: 'Rock Salt', sans-serif;
+      text-shadow: 2px 2px 4px #000000;
+    }
+
+    .display-year-month-title {
+      font-family: 'Wallpoet';
+      font-size: 30px;
+      color: darkorange;
+    }
+  </style>
+</head>
+
+<body class="background-transition">
+  <div class="container">
+    <header>
+      <div class="row">
+        <h1 class=" calendar text-center col-12">Calendar</h1>
+        <button class="btn btn-outline-warning col-2 mt-5 mb-2 last-month-BTN">Last month</button>
+        <div class="col row justify-content-center">
+          <h2 class="text-center display-year-month-title">display:month/date</h2>
+          <button class="btn btn-outline-warning my-2 col-3 today-BTN">Today</button>
+        </div>
+        <button class="btn btn-outline-warning col-2 mt-5 mb-2 next-month-BTN">Next month</button>
+      </div>
+    </header>
+    <section class="mt-1">
+      <div class="row flex-wrap weeks">
+        <!-- <div class="col border create-date">1</div> -->
+      </div>
+      <div class="row flex-wrap display-date">
+        <!-- <div class="col border create-date">1</div> -->
+      </div>
+    </section>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+    crossorigin="anonymous"></script>
+  <script>
+    let currentDate, currentYear, currentMonth, displayMonth, todayDate, todayWeek
+
+    let weeks = document.querySelector('.weeks')
+    let displayYearNonthTitle = document.querySelector('.display-year-month-title')
+    let lastMonthBTN = document.querySelector('.last-month-BTN');
+    let nextMonthBTN = document.querySelector('.next-month-BTN');
+    let todayBTN = document.querySelector('.today-BTN');
+    let displayDate = document.querySelector('.display-date')
+    window.onload = function () {
+      createWeeks()
+      createCurrentDate()
+      renderingDate()
+    }
+    todayBTN.addEventListener('click', function () {
+      createCurrentDate()
+      renderingDate()
+    })
+    lastMonthBTN.addEventListener('click', function () {
+      displayMonth--
+      currentMonth--
+      if (currentMonth < 0) { displayMonth = 12; currentMonth = 11; currentYear-- }
+      showTitle(currentYear, currentMonth, currentDate)
+      renderingDate()
+    })
+    nextMonthBTN.addEventListener('click', function () {
+      displayMonth++
+      currentMonth++
+      if (currentMonth > 11) { displayMonth = 1; currentMonth = 0; currentYear++ }
+      showTitle(currentYear, currentMonth, currentDate)
+      renderingDate()
+    })
+    function createCurrentDate() {
+      currentDate = new Date();
+      currentYear = currentDate.getFullYear();
+      currentMonth = currentDate.getMonth();
+      displayMonth = currentDate.getMonth() + 1;
+      todayDate = currentDate.getDate();
+      todayWeek = currentDate.getDay();
+      showTitle(currentYear, currentMonth, currentDate)
+    }
+
+
+    function showTitle(year, month, date) {//${month.toString().padStart(2, '0')}
+      displayYearNonthTitle.innerText = `${year}-${new Date(0, month).toLocaleString('en', { month: 'long' })}`
+    }
+
+
+    function createWeeks() {
+      for (let i = 9; i <= 15; i++) {
+        let week = new Date(2023, 6, i)
+        let week_en = week.toLocaleString('en', { weekday: 'long' });
+        let date = document.createElement('div')
+        date.innerText = week_en;
+        date.classList.add('week', 'col', 'border', 'text-center')
+        weeks.append(date)
+      }
+    }
+
+    function renderingDate() {
+      let firstDay = new Date(currentYear, currentMonth, 1)
+      let endDate = new Date(currentYear, displayMonth, 0)
+      //計算1號之前有幾天:1-(1號的星期0~6) = 比如等於-3加幾次等於0? == 4天
+      //比如星期日=0 >> 1-0=1 代表沒有1號之前的天數
+      //比如星期一=1 >> 1-1=0 代表 有1天是1號之前的天數
+      let start = 1 - firstDay.getDay()
+      //計算月底之後有幾天:比如31號是星期2 6-2=4天 +當月的總天數
+      let ending = (6 - endDate.getDay()) + endDate.getDate()
+      displayDate.innerHTML = ''
+      for (start; start <= ending; start++) {
+        let loopToday = new Date(currentYear, currentMonth, start)
+
+        const divDOM = document.createElement('div')
+        divDOM.classList.add('create-date', 'col', 'border', 'border-primary-subtle', 'border', 'col', 'text-truncate', 'text-danger', 'fw-bold')
+
+        const spanDOM = document.createElement('span')
+        spanDOM.classList.add('d-inline-block', 'w-100', 'text-center')
+
+        if (loopToday.getFullYear() === currentDate.getFullYear() &&
+          loopToday.getMonth() === currentDate.getMonth() &&
+          loopToday.getDate() === currentDate.getDate()) {
+          spanDOM.classList.add('text-bg-info')
+        }
+        spanDOM.textContent = loopToday.getDate()
+        divDOM.append(spanDOM)
+        if (loopToday.getMonth() !== currentMonth) {
+          divDOM.classList.add('text-black-50')
+        }
+        displayDate.append(divDOM)
+      }
+      
+      const backgroundImgs = ['./7.jpg', './2.png', './3.jpg',
+        './6.png', './5.png', './6.jpg', './12.jpg', './8.jpg',
+        './9.jpg', './10.jpg', './11.png', './1.jpg'
+      ];
+      document.body.setAttribute('style', `background: url(${backgroundImgs[currentMonth]}) no-repeat center / cover;`);
+    }
+
+  </script>
+</body>
+
+</html>
