@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bootstrap demo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Wallpoet&display=swap" rel="stylesheet">
+  <style>
+    .background-transition {
+      transition: background-image .7s ease-in-out;
+      background-color: #444444;
+    }
+
+    /* ========================== */
+    .create-date {
+      flex-basis: calc(100% / 7);
+      max-width: calc(100% / 7);
+      box-sizing: border-box;
+      height: 60px;
+      font-family: 'Rock Salt';
+    }
+
+    .create-date:hover {
+      background-color: rgb(13, 202, 240);
+      font-weight: 900;
+      cursor: pointer;
+      opacity: .7;
+    }
+
+    .week {
+      flex-basis: calc(100% / 7);
+      max-width: calc(100% / 7);
+      box-sizing: border-box;
+      font-family: 'Rock Salt';
+      color: violet;
+    }
+
+    .calendar {
+      color: blueviolet;
+      font-family: 'Rock Salt', sans-serif;
+      text-shadow: 2px 2px 4px #000000;
+    }
+
+    .display-year-month-title {
+      font-family: 'Wallpoet';
+      font-size: 30px;
+      color: darkorange;
+    }
+  </style>
+</head>
+
+<body class="background-transition">
+  <div class="container">
+    <header>
+      <div class="row">
+        <h1 class=" calendar text-center col-12">Calendar</h1>
+        <button class="btn btn-outline-warning col-2 mt-5 mb-2 last-month-BTN">Last month</button>
+        <div class="col row justify-content-center">
+          <h2 class="text-center display-year-month-title">display:month/date</h2>
+          <button class="btn btn-outline-warning my-2 col-3 today-BTN">Today</button>
+        </div>
+        <button class="btn btn-outline-warning col-2 mt-5 mb-2 next-month-BTN">Next month</button>
+      </div>
+    </header>
+    <section class="mt-1">
+      <div class="row flex-wrap weeks">
+        <!-- <div class="col border create-date">1</div> -->
+      </div>
+      <div class="row flex-wrap display-date">
+        <!-- <div class="col border create-date">1</div> -->
+      </div>
+      <button type="button" class="btn btn-outline-warning mt-2" data-bs-toggle="modal" data-bs-target="#add">
+        Add today's note
+      </button>
+    </section>
+
+
+
+    <!-- Add Modal -->
+    <div class="modal fade" id="add" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+      aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="staticBackdropLabel">add note</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <!-- ------------------------ -->
+            <label for="add-date-input" class="form-label">date:</label>
+
+            <input type="date" class="form-control" id="add-date-input" aria-describedby="add-date-input-described">
+
+            <div id="add-date-input-described" class="form-text">Please select a date</div>
+            <!-- -------- -->
+            <label for="add-note-input" class="form-label">note:</label>
+
+            <textarea class="form-control" id="add-note-input"></textarea>
+            <!-- ------------------------ -->
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" id="add-btn">Add</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ---edit Modal--- -->
+    <div class="modal fade" id="edit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+      aria-labelledby="staticBackdropLabel-edit" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="staticBackdropLabel-edit">edit note</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <!-- ------------------------- -->
+            <label for="edit-date-input" class="form-label">date:</label>
+
+            <input type="date" class="form-control" id="edit-date-input" aria-describedby="edit-date-input-described"
+              disabled>
+
+            <!-- ------------ -->
+            <label for="edit-note-input" class="form-label">note:</label>
+
+            <textarea class="form-control" id="edit-note-input"></textarea>
+            <!-- -------------------------- -->
+          </div>
+          <div class="modal-footer">
+            <!-- ------------------------------- -->
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+            <button type="button" class="btn btn-danger" id="delete-btn">delete</button>
+
+            <button type="button" class="btn btn-primary" id="edit-btn">edit</button>
+            <!-- ------------------------------ -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ------------------ -->
+
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+    crossorigin="anonymous"></script>
+  <script>
+    let currentDate, currentYear, currentMonth, displayMonth, todayDate, todayWeek
+
+    let weeks = document.querySelector('.weeks')
+    let displayYearNonthTitle = document.querySelector('.display-year-month-title')
+    let lastMonthBTN = document.querySelector('.last-month-BTN');
+    let nextMonthBTN = document.querySelector('.next-month-BTN');
+    let todayBTN = document.querySelector('.today-BTN');
+    let displayDate = document.querySelector('.display-date')
+
+    // -----------------------------
+    const storageKey = 'note'//modal的Key
+    let noteItemObj = {}//物件 =>屬性(字串日期)=>屬性值(陣列)=>陣列索引是某日的每筆note
+    const add = bootstrap.Modal.getOrCreateInstance('#add')//Add Modal最外層
+    const addDateInput = document.querySelector('#add-date-input')//抓日期input
+    const addNoteInput = document.querySelector('#add-note-input')//代辦事項輸入框
+    const addBTN = document.querySelector('#add-btn')//確認新增按鈕
+
+    const edit = bootstrap.Modal.getOrCreateInstance('#edit')//edit Modal最外層
+    const editDateInput = document.querySelector('#edit-date-input')//抓日期input 不可改
+    const editNoteInput = document.querySelector('#edit-note-input')//修改代辦事項輸入框
+    const editBTN = document.querySelector('#edit-btn')//確認修改按鈕
+    const deleteBTN = document.querySelector('#delete-btn')//確認刪除按鈕
+
+
+    //當Add Modal被關閉時addNoteInput()代辦事項輸入框內容清空
+    // document.querySelector('#add').addEventListener('hidden.bs.modal', function () {
+    //   addNoteInput.value = ''
+    // })
+
+    //MoDal的新增按鈕
+    addBTN.addEventListener('click', function () {
+      const dateStr = addDateInput.value//抓取addDateInput日期的值
+      const noteStr = addNoteInput.value.trim()//抓取addNoteInput代辦事項的值 並 取消前後空白
+      if (addNoteInput === '') {//如果代辦事項的值是空的就退出 不執行下面代碼
+        return
+      }
+      //將日期變為物件屬性名 note內容變為該日期屬性的屬性值(陣列)
+      //將物件轉換純文字加入localStorage
+      setNoteToStorage(dateStr, noteStr)
+      addNoteInput.value = ''//按下新增後將note輸入框清空
+      add.hide()//關閉add Modal
+    })
+
+    //傳入的參數為 Add-date-input 與Add-note-input 輸入框內的內容
+    function setNoteToStorage(dateStr, notestr) {
+      //如果noteItemObj物件中的日期屬性裡沒有陣列的話
+      if (!Array.isArray(noteItemObj[dateStr])) {
+        //為沒有陣列的日期屬性值增加一個空陣列
+        noteItemObj[dateStr] = []
+      }
+
+      //將物件中日期屬性增加Add-note-input輸入框的內容
+      noteItemObj[dateStr].push(notestr)
+
+      resetStorage()//將加入後的物件轉換純文字後加入localStorage
+
+      createCurrentDate()//呼叫建立當前日期和渲染
+    }
+
+    //抓取localStorage的key拿取value純文字轉換回物件 如果有的話
+    function getNoteFromStorage() {
+      const noteObj = JSON.parse(localStorage.getItem(storageKey))
+      if (noteObj)
+        noteItemObj = noteObj
+    }
+
+    function resetStorage() {
+      let noteItemsJson = JSON.stringify(noteItemObj)//將物件轉換純文字
+      localStorage.setItem(storageKey, noteItemsJson)//'note'與物件格式純文字
+    }
+
+    function deleteNote(dateStr, intdex) {
+      //arr1.splice(要插入或刪除的索引位置, 要刪除的元素數量, 要插入的元素內容)
+      noteItemObj[dateStr].splice(intdex, 1)
+      resetStorage()//將加入後的物件轉換純文字後加入localStorage
+      edit.hide()//按下更新時關閉Modal
+      createCurrentDate()//建立日期及渲染
+    }
+
+    function editNote(dateStr, index, notestr) {
+      noteItemObj[dateStr][index] = notestr
+      resetStorage()
+      edit.hide()
+      createCurrentDate()
+    }
+
+    //日期轉換字串
+    function getDateStr(date) {
+      return `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`
+    }
+    // --------------------------------
+    window.onload = function () {
+      getNoteFromStorage()
+
+      createWeeks()
+      createCurrentDate()
+    }
+    todayBTN.addEventListener('click', function () {
+      createCurrentDate()
+      renderingDate()
+    })
+    lastMonthBTN.addEventListener('click', function () {
+      displayMonth--
+      currentMonth--
+      if (currentMonth < 0) { displayMonth = 12; currentMonth = 11; currentYear-- }
+      showTitle(currentYear, currentMonth, currentDate)
+      renderingDate()
+    })
+    nextMonthBTN.addEventListener('click', function () {
+      displayMonth++
+      currentMonth++
+      if (currentMonth > 11) { displayMonth = 1; currentMonth = 0; currentYear++ }
+      showTitle(currentYear, currentMonth, currentDate)
+      renderingDate()
+    })
+    function createCurrentDate() {
+      currentDate = new Date();
+      currentYear = currentDate.getFullYear();
+      currentMonth = currentDate.getMonth();
+      displayMonth = currentDate.getMonth() + 1;
+      todayDate = currentDate.getDate();
+      todayWeek = currentDate.getDay();
+      showTitle(currentYear, currentMonth, currentDate)
+      renderingDate()//建立當前日期時同時渲染畫面
+      //---建立Add日旗的值
+      addDateInput.value = getDateStr(currentDate)
+      //---
+    }
+
+    //${month.toString().padStart(2, '0')}
+    function showTitle(year, month, date) {
+      displayYearNonthTitle.innerText = `${year}-${new Date(0, month).toLocaleString('en', { month: 'long' })}`
+    }
+
+
+    function createWeeks() {
+      for (let i = 9; i <= 15; i++) {
+        let week = new Date(2023, 6, i)
+        let week_en = week.toLocaleString('en', { weekday: 'long' });
+        let date = document.createElement('div')
+        date.innerText = week_en;
+        date.classList.add('week', 'col', 'border', 'text-center')
+        weeks.append(date)
+      }
+    }
+
+    function renderingDate() {
+      let firstDay = new Date(currentYear, currentMonth, 1)
+      let endDate = new Date(currentYear, displayMonth, 0)
+      //計算1號之前有幾天:1-(1號的星期0~6) = 比如等於-3加幾次等於0? == 4天
+      //比如星期日=0 >> 1-0=1 代表沒有1號之前的天數
+      //比如星期一=1 >> 1-1=0 代表 有1天是1號之前的天數
+      let start = 1 - firstDay.getDay()
+      //計算月底之後有幾天:比如31號是星期2 6-2=4天 +當月的總天數
+      let ending = (6 - endDate.getDay()) + endDate.getDate()
+      displayDate.innerHTML = ''
+      for (start; start <= ending; start++) {
+        let loopToday = new Date(currentYear, currentMonth, start)
+
+        const divDOM = document.createElement('div')
+        divDOM.classList.add('create-date', 'col', 'border', 'border-primary-subtle', 'border', 'col', 'text-truncate', 'text-danger', 'fw-bold')
+
+        const spanDOM = document.createElement('span')
+        spanDOM.classList.add('d-inline-block', 'w-100', 'text-center')
+
+        if (loopToday.getFullYear() === currentDate.getFullYear() &&
+          loopToday.getMonth() === currentDate.getMonth() &&
+          loopToday.getDate() === currentDate.getDate()) {
+          spanDOM.classList.add('text-bg-info')
+        }
+        spanDOM.textContent = loopToday.getDate()
+        divDOM.append(spanDOM)
+        if (loopToday.getMonth() !== currentMonth) {
+          divDOM.classList.add('text-black-50')
+        }
+
+        // ------
+        const currDateStr = getDateStr(loopToday)
+        const currNoteItems = noteItemObj[currDateStr]
+        if (currNoteItems) {
+
+          const ul = document.createElement('ul')
+          currNoteItems.forEach((note, idx) => {
+            const li = document.createElement('li')
+            li.textContent = note
+            li.addEventListener('click', function (event) {
+              editDateInput.value = currDateStr
+              editNoteInput.value = note
+              editBTN.onclick = function () {
+                editNote(currDateStr, idx, editNoteInput.value.trim())
+              }
+              deleteBTN.onclick = function () {
+                deleteNote(currDateStr, idx)
+              }
+              edit.show()
+              event.stopPropagation()
+            })
+            ul.append(li)
+          })
+          divDOM.append(ul)
+          
+        }
+        divDOM.addEventListener('click', function () {
+          addDateInput.value = getDateStr(loopToday)
+          add.show()
+        })
+        displayDate.append(divDOM)
+
+        // const backgroundImgs = ['./7.jpg', './2.png', './3.jpg',
+        //   './6.png', './5.png', './6.jpg', './12.jpg', './8.jpg',
+        //   './9.jpg', './10.jpg', './11.png', './1.jpg'
+        // ];
+        // document.body.setAttribute('style', `background: url(${backgroundImgs[currentMonth]}) no-repeat center / cover;`);
+      }
+    }
+
+  </script>
+</body>
+
+</html>
