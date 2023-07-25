@@ -151,7 +151,7 @@
             if (newInputValue !== '') {
                 todoList[idx].todoItem = newInputValue
                 localStorage.setItem(localStorageKey, JSON.stringify(todoList))
-                newInputValue.disabled = true;
+                
                 rendering()
             }
         }
