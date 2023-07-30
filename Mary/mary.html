@@ -22,7 +22,7 @@
             justify-content: center;
             align-items: center;
             border: none;
-            transition: .3s;
+            transition: .1s;
             border-radius: 20px;
             border: solid 1px rgb(255, 196, 4);
         }
@@ -368,7 +368,7 @@
             createBricks()
             //Start Button
             document.querySelector('button').addEventListener('click', function () {
-                speed = 50
+                speed = 18
                 let random = Math.floor(Math.random() * brick_Data.length) + 1
                 // console.log(random)
                 steps = random + (3 * bricks.length)
@@ -413,7 +413,7 @@
             if (steps > 0) {
                 setTimeout(turnAround, speed)
                 //當剩下1/3時，減速度
-                if (steps < Math.floor((allSteps / 3))) { speed += 7 }
+                if (steps < Math.floor((allSteps / 5))) { speed += 3 }
             } else {
                 //跑完了
                 let msgBox = document.getElementById('msg')
