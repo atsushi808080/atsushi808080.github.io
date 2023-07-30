@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-
     <style>
+
         i {
             font-size: 48px;
         }
@@ -23,23 +23,25 @@
             align-items: center;
             border: none;
             transition: .3s;
+            border-radius: 20px;
+            border: solid 1px rgb(255, 196, 4);
         }
 
         [box-id].active {
-            border: solid 5px hotpink;
-            box-shadow: 0 0 20px hotpink;
+            border: solid 35px rgb(125, 109, 45);
+            box-shadow: 0px 0px 50px rgb(255, 217, 0);
             transition: 0s;
+            border-radius: 20px;
         }
 
         #msg {
-            font-size: 36px;
+            font-size: 20px;
             text-align: center;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- 1 row -->
+    <div class="my-5 container">
         <div class="row">
             <div box-id="1" class="col-1"></div>
             <div box-id="2" class="col-1"></div>
@@ -104,7 +106,7 @@
                 color: 'pink',
                 icon: 'fa-regular fa-face-tired',
                 target: function () {
-                    return 'tired'
+                    return 'ʕ•ᴥ•ʔ'
                 }
             },
             {
@@ -112,7 +114,7 @@
                 color: 'lightpink',
                 icon: 'fa-solid fa-face-surprise',
                 target: function () {
-                    return 'surprise'
+                    return '( •̀_•́ )'
                 }
             },
             {
@@ -120,7 +122,7 @@
                 color: 'orange',
                 icon: 'fa-solid fa-face-smile-wink',
                 target: function () {
-                    return 'smile-wink'
+                    return '(>皿<)'
                 }
             },
             {
@@ -128,7 +130,7 @@
                 color: 'lightsalmon',
                 icon: 'fa-solid fa-face-sad-tear',
                 target: function () {
-                    return 'sad-tear'
+                    return '(´･ω･`)'
                 }
             },
             {
@@ -136,7 +138,7 @@
                 color: 'darkorange',
                 icon: 'fa-solid fa-face-sad-cry',
                 target: function () {
-                    return 'sad-cry'
+                    return '(`o´)'
                 }
             },
             {
@@ -144,7 +146,7 @@
                 color: 'coral',
                 icon: 'fa-solid fa-face-rolling-eyes',
                 target: function () {
-                    return 'rolling-eyes'
+                    return '(ˇ⊖ˇ)'
                 }
             },
             {
@@ -152,7 +154,7 @@
                 color: 'hotpink',
                 icon: 'fa-solid fa-face-meh-blank',
                 target: function () {
-                    return 'meh-blank'
+                    return '(°ヮ°)'
                 }
             },
             {
@@ -160,7 +162,7 @@
                 color: 'tomato',
                 icon: 'fa-solid fa-face-meh',
                 target: function () {
-                    return 'meh'
+                    return '・ε・'
                 }
             },
             {
@@ -168,7 +170,7 @@
                 color: 'orangered',
                 icon: 'fa-solid fa-face-laugh-wink',
                 target: function () {
-                    return 'laugh-wink'
+                    return '( ︶︿︶)'
                 }
             },
             {
@@ -176,7 +178,7 @@
                 color: 'deeppink',
                 icon: 'fa-solid fa-face-laugh-squint',
                 target: function () {
-                    return 'laugh-squint'
+                    return '(◕◡◉)'
                 }
             },
             {
@@ -184,7 +186,7 @@
                 color: 'fuchsia',
                 icon: 'fa-solid fa-face-flushed',
                 target: function () {
-                    return 'flushed'
+                    return '╥﹏╥'
                 }
             },
             {
@@ -192,7 +194,7 @@
                 color: 'red',
                 icon: 'fa-solid fa-face-laugh-beam',
                 target: function () {
-                    return 'laugh-beam'
+                    return '●︿●'
                 }
             },
             {
@@ -200,7 +202,7 @@
                 color: 'salmon',
                 icon: 'fa-solid fa-face-laugh',
                 target: function () {
-                    return 'laugh'
+                    return 'ಠ╭╮ಠ'
                 }
             },
             {
@@ -208,7 +210,7 @@
                 color: 'sandybrown',
                 icon: 'fa-solid fa-face-kiss-wink-heart',
                 target: function () {
-                    return 'kiss-wink-heart'
+                    return '(⊙▂⊙ )'
                 }
             },
             {
@@ -216,7 +218,7 @@
                 color: 'khaki',
                 icon: 'fa-solid fa-face-kiss-beam',
                 target: function () {
-                    return 'kiss-beam'
+                    return '(￣ε￣)~♪'
                 }
             },
             {
@@ -224,7 +226,7 @@
                 color: 'lightcoral',
                 icon: 'fa-solid fa-face-kiss',
                 target: function () {
-                    return 'kiss'
+                    return 'ಥ_ಥ'
                 }
             },
             {
@@ -232,7 +234,7 @@
                 color: 'palegoldenrod',
                 icon: 'fa-solid fa-face-grin-wink',
                 target: function () {
-                    return 'grin-wink'
+                    return 'ఠ_ఠ'
                 }
             },
             {
@@ -240,7 +242,7 @@
                 color: 'violet',
                 icon: 'fa-solid fa-face-dizzy',
                 target: function () {
-                    return 'dizzy'
+                    return '┌( ಠ‿ಠ)┘'
                 }
             },
             {
@@ -248,7 +250,7 @@
                 color: 'darksalmon',
                 icon: 'fa-solid fa-face-grin-wide',
                 target: function () {
-                    return 'grin-wide'
+                    return 'ლ(･ ิω･ิლ)'
                 }
             },
             {
@@ -256,7 +258,7 @@
                 color: 'papayawhip',
                 icon: 'fa-solid fa-face-grin-tongue-wink',
                 target: function () {
-                    return 'tongue-wink'
+                    return 'ლ(❛◡❛✿)ლ'
                 }
             },
             {
@@ -264,7 +266,7 @@
                 color: 'gold',
                 icon: 'fa-solid fa-face-grin-tongue-squint',
                 target: function () {
-                    return 'tongue-squint'
+                    return '(◕ᴥ◕)'
                 }
             },
             {
@@ -272,7 +274,7 @@
                 color: 'peachpuff',
                 icon: 'fa-solid fa-face-grin-tongue',
                 target: function () {
-                    return 'grin-tongue'
+                    return '⚗_⚗'
                 }
             },
             {
@@ -280,7 +282,7 @@
                 color: 'chocolate',
                 icon: 'fa-solid fa-face-angry',
                 target: function () {
-                    return 'grin-angry'
+                    return '(◎_◎;)'
                 }
             },
             {
@@ -288,7 +290,7 @@
                 color: 'peru',
                 icon: 'fa-solid fa-face-grin-stars',
                 target: function () {
-                    return 'grin-stars'
+                    return '˶⚈Ɛ⚈˵'
                 }
             },
             {
@@ -296,7 +298,7 @@
                 color: 'indianred',
                 icon: 'fa-solid fa-face-grin-squint-tears',
                 target: function () {
-                    return 'squint-tears'
+                    return '●︿●'
                 }
             },
             {
@@ -304,7 +306,7 @@
                 color: 'mediumvioletred',
                 icon: 'fa-solid fa-face-grin-squint',
                 target: function () {
-                    return 'grin-squint'
+                    return '(ಥ_ʖಥ)'
                 }
             },
             {
@@ -312,7 +314,7 @@
                 color: 'silver',
                 icon: 'fa-solid fa-face-grin-hearts',
                 target: function () {
-                    return 'grin-hearts'
+                    return '＝"＝凸'
                 }
             },
             {
@@ -320,7 +322,7 @@
                 color: 'firebrick',
                 icon: 'fa-solid fa-face-grin-beam-sweat',
                 target: function () {
-                    return 'beam-sweat'
+                    return '｀_ゝ´)'
                 }
             },
             {
@@ -328,7 +330,7 @@
                 color: 'greenyellow',
                 icon: 'fa-solid fa-face-grin',
                 target: function () {
-                    return 'grin'
+                    return '(･ิω･ิ)'
                 }
             },
             {
@@ -344,7 +346,7 @@
                 color: 'skyblue',
                 icon: 'fa-solid fa-face-grimace',
                 target: function () {
-                    return 'grimace'
+                    return 'Σ(T□T)'
                 }
             },
             {
@@ -352,7 +354,7 @@
                 color: 'blueviolet',
                 icon: 'fa-solid fa-face-frown-open',
                 target: function () {
-                    return 'frown-open'
+                    return '(;´ρ`)'
                 }
             }
         ]
@@ -362,7 +364,7 @@
         let currentIndex = 0 //目前走到哪一格
         let speed = 30 //速率(越大代表越慢)
 
-        window.onload = function () {
+        window.addEventListener('load',function () {
             createBricks()
             //Start Button
             document.querySelector('button').addEventListener('click', function () {
@@ -373,7 +375,7 @@
                 allSteps = steps
                 turnAround()
             })
-        }
+        })
         
         function createBricks() {
             bricks = document.querySelectorAll('[box-id]')
