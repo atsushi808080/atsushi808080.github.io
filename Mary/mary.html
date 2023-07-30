@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Little Mary</title>
+    <title>Mary</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -362,14 +362,14 @@
         let steps = 0 //剩餘的步數
         let allSteps = 0  //全部的步數
         let currentIndex = 0 //目前走到哪一格
-        let speed = 30 //速率(越大代表越慢)
+        let speed //速率(越大代表越慢)
 
         window.addEventListener('load',function () {
             createBricks()
             //Start Button
             document.querySelector('button').addEventListener('click', function () {
                 speed = 18
-                let random = Math.floor(Math.random() * brick_Data.length) + 1
+                let random = Math.floor(Math.random() * brick_Data.length) + 300
                 // console.log(random)
                 steps = random + (3 * bricks.length)
                 allSteps = steps
@@ -413,7 +413,7 @@
             if (steps > 0) {
                 setTimeout(turnAround, speed)
                 //當剩下1/3時，減速度
-                if (steps < Math.floor((allSteps / 5))) { speed += 3 }
+                if (steps < Math.floor((allSteps / 8))) { speed += 2 }
             } else {
                 //跑完了
                 let msgBox = document.getElementById('msg')
