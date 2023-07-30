@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Little Mary</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        i {
+            font-size: 48px;
+        }
+
+        [box-id] {
+            /* width: 80px; */
+            height: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: none;
+            transition: .3s;
+        }
+
+        [box-id].active {
+            border: solid 5px hotpink;
+            box-shadow: 0 0 20px hotpink;
+            transition: 0s;
+        }
+
+        #msg {
+            font-size: 36px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 1 row -->
+        <div class="row">
+            <div box-id="1" class="col-1"></div>
+            <div box-id="2" class="col-1"></div>
+            <div box-id="3" class="col-1"></div>
+            <div box-id="4" class="col-1"></div>
+            <div box-id="5" class="col-1"></div>
+            <div box-id="6" class="col-1"></div>
+            <div box-id="7" class="col-1"></div>
+            <div box-id="8" class="col-1"></div>
+            <div box-id="9" class="col-1"></div>
+            <div box-id="10" class="col-1"></div>
+            <div box-id="11" class="col-1"></div>
+            <div box-id="12" class="col-1"></div>
+        </div>
+        <div class="row">
+            <div box-id="32" class="col-1"></div>
+            <div class="col-10"></div>
+            <div box-id="13" class="col-1"></div>
+        </div>
+        <div class="row">
+            <div box-id="31" class="col-1"></div>
+            <div class="col-10">
+                <p id="msg"></p>
+            </div>
+            <div box-id="14" class="col-1"></div>
+        </div>
+        <div class="row">
+            <div box-id="30" class="col-1"></div>
+            <div class="col-10 text-center">
+                <button class=" btn btn-primary">Start</button>
+            </div>
+            <div box-id="15" class="col-1"></div>
+        </div>
+        <div class="row">
+            <div box-id="29" class="col-1"></div>
+            <div class="col-10"></div>
+            <div box-id="16" class="col-1"></div>
+        </div>
+        <div class="row">
+            <div box-id="28" class="col-1"></div>
+            <div box-id="27" class="col-1"></div>
+            <div box-id="26" class="col-1"></div>
+            <div box-id="25" class="col-1"></div>
+            <div box-id="24" class="col-1"></div>
+            <div box-id="23" class="col-1"></div>
+            <div box-id="22" class="col-1"></div>
+            <div box-id="21" class="col-1"></div>
+            <div box-id="20" class="col-1"></div>
+            <div box-id="19" class="col-1"></div>
+            <div box-id="18" class="col-1"></div>
+            <div box-id="17" class="col-1"></div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+
+    <script>
+        const brick_Data = [
+            {
+                id: '1',
+                color: 'pink',
+                icon: 'fa-regular fa-face-tired',
+                target: function () {
+                    return 'tired'
+                }
+            },
+            {
+                id: '2',
+                color: 'lightpink',
+                icon: 'fa-solid fa-face-surprise',
+                target: function () {
+                    return 'surprise'
+                }
+            },
+            {
+                id: '3',
+                color: 'orange',
+                icon: 'fa-solid fa-face-smile-wink',
+                target: function () {
+                    return 'smile-wink'
+                }
+            },
+            {
+                id: '4',
+                color: 'lightsalmon',
+                icon: 'fa-solid fa-face-sad-tear',
+                target: function () {
+                    return 'sad-tear'
+                }
+            },
+            {
+                id: '5',
+                color: 'darkorange',
+                icon: 'fa-solid fa-face-sad-cry',
+                target: function () {
+                    return 'sad-cry'
+                }
+            },
+            {
+                id: '6',
+                color: 'coral',
+                icon: 'fa-solid fa-face-rolling-eyes',
+                target: function () {
+                    return 'rolling-eyes'
+                }
+            },
+            {
+                id: '7',
+                color: 'hotpink',
+                icon: 'fa-solid fa-face-meh-blank',
+                target: function () {
+                    return 'meh-blank'
+                }
+            },
+            {
+                id: '8',
+                color: 'tomato',
+                icon: 'fa-solid fa-face-meh',
+                target: function () {
+                    return 'meh'
+                }
+            },
+            {
+                id: '9',
+                color: 'orangered',
+                icon: 'fa-solid fa-face-laugh-wink',
+                target: function () {
+                    return 'laugh-wink'
+                }
+            },
+            {
+                id: '10',
+                color: 'deeppink',
+                icon: 'fa-solid fa-face-laugh-squint',
+                target: function () {
+                    return 'laugh-squint'
+                }
+            },
+            {
+                id: '11',
+                color: 'fuchsia',
+                icon: 'fa-solid fa-face-flushed',
+                target: function () {
+                    return 'flushed'
+                }
+            },
+            {
+                id: '12',
+                color: 'red',
+                icon: 'fa-solid fa-face-laugh-beam',
+                target: function () {
+                    return 'laugh-beam'
+                }
+            },
+            {
+                id: '13',
+                color: 'salmon',
+                icon: 'fa-solid fa-face-laugh',
+                target: function () {
+                    return 'laugh'
+                }
+            },
+            {
+                id: '14',
+                color: 'sandybrown',
+                icon: 'fa-solid fa-face-kiss-wink-heart',
+                target: function () {
+                    return 'kiss-wink-heart'
+                }
+            },
+            {
+                id: '15',
+                color: 'khaki',
+                icon: 'fa-solid fa-face-kiss-beam',
+                target: function () {
+                    return 'kiss-beam'
+                }
+            },
+            {
+                id: '16',
+                color: 'lightcoral',
+                icon: 'fa-solid fa-face-kiss',
+                target: function () {
+                    return 'kiss'
+                }
+            },
+            {
+                id: '17',
+                color: 'palegoldenrod',
+                icon: 'fa-solid fa-face-grin-wink',
+                target: function () {
+                    return 'grin-wink'
+                }
+            },
+            {
+                id: '18',
+                color: 'violet',
+                icon: 'fa-solid fa-face-dizzy',
+                target: function () {
+                    return 'dizzy'
+                }
+            },
+            {
+                id: '19',
+                color: 'darksalmon',
+                icon: 'fa-solid fa-face-grin-wide',
+                target: function () {
+                    return 'grin-wide'
+                }
+            },
+            {
+                id: '20',
+                color: 'papayawhip',
+                icon: 'fa-solid fa-face-grin-tongue-wink',
+                target: function () {
+                    return 'tongue-wink'
+                }
+            },
+            {
+                id: '21',
+                color: 'gold',
+                icon: 'fa-solid fa-face-grin-tongue-squint',
+                target: function () {
+                    return 'tongue-squint'
+                }
+            },
+            {
+                id: '22',
+                color: 'peachpuff',
+                icon: 'fa-solid fa-face-grin-tongue',
+                target: function () {
+                    return 'grin-tongue'
+                }
+            },
+            {
+                id: '23',
+                color: 'chocolate',
+                icon: 'fa-solid fa-face-angry',
+                target: function () {
+                    return 'grin-angry'
+                }
+            },
+            {
+                id: '24',
+                color: 'peru',
+                icon: 'fa-solid fa-face-grin-stars',
+                target: function () {
+                    return 'grin-stars'
+                }
+            },
+            {
+                id: '25',
+                color: 'indianred',
+                icon: 'fa-solid fa-face-grin-squint-tears',
+                target: function () {
+                    return 'squint-tears'
+                }
+            },
+            {
+                id: '26',
+                color: 'mediumvioletred',
+                icon: 'fa-solid fa-face-grin-squint',
+                target: function () {
+                    return 'grin-squint'
+                }
+            },
+            {
+                id: '27',
+                color: 'silver',
+                icon: 'fa-solid fa-face-grin-hearts',
+                target: function () {
+                    return 'grin-hearts'
+                }
+            },
+            {
+                id: '28',
+                color: 'firebrick',
+                icon: 'fa-solid fa-face-grin-beam-sweat',
+                target: function () {
+                    return 'beam-sweat'
+                }
+            },
+            {
+                id: '29',
+                color: 'greenyellow',
+                icon: 'fa-solid fa-face-grin',
+                target: function () {
+                    return 'grin'
+                }
+            },
+            {
+                id: '30',
+                color: 'darkorchid',
+                icon: 'fa-solid fa-face-frown',
+                target: function () {
+                    return 'frown'
+                }
+            },
+            {
+                id: '31',
+                color: 'skyblue',
+                icon: 'fa-solid fa-face-grimace',
+                target: function () {
+                    return 'grimace'
+                }
+            },
+            {
+                id: '32',
+                color: 'blueviolet',
+                icon: 'fa-solid fa-face-frown-open',
+                target: function () {
+                    return 'frown-open'
+                }
+            }
+        ]
+        let bricks
+        let steps = 0 //剩餘的步數
+        let allSteps = 0  //全部的步數
+        let currentIndex = 0 //目前走到哪一格
+        let speed = 30 //速率(越大代表越慢)
+
+        window.onload = function () {
+            createBricks()
+            //Start Button
+            document.querySelector('button').addEventListener('click', function () {
+                speed = 50
+                let random = Math.floor(Math.random() * brick_Data.length) + 1
+                // console.log(random)
+                steps = random + (3 * bricks.length)
+                allSteps = steps
+                turnAround()
+            })
+        }
+        
+        function createBricks() {
+            bricks = document.querySelectorAll('[box-id]')
+            bricks = Array.from(bricks)
+            .sort((a, b) => {
+                return a.getAttributeNode('box-id').value - b.getAttributeNode('box-id').value
+            })
+            console.log(bricks)
+            bricks.forEach((x, index) => {
+                let id = index + 1
+                let data = brick_Data.find(x => x.id == id)
+                let icon = document.createElement('i')
+                icon.setAttribute('class', data.icon)
+                icon.style.color = data.color
+                x.appendChild(icon)
+            })
+        }
+
+        function turnAround() {
+            bricks[currentIndex].classList.remove('active')
+            currentIndex++
+            if (currentIndex >= bricks.length) currentIndex = 0 
+            bricks[currentIndex].classList.add('active')
+            steps--
+            //一般版本:
+            // if( steps > 0){
+            //     setTimeout(turnAround,speed)
+            // }else{
+            //     //跑完了
+            //     let msgBox = document.getElementById('msg')
+            //     let val = brick_Data[currentIndex].target()
+            //     msgBox.innerText = `接下來30分鐘 -> ${val}`
+            // }
+            //變速版本:
+            if (steps > 0) {
+                setTimeout(turnAround, speed)
+                //當剩下1/3時，減速度
+                if (steps < Math.floor((allSteps / 3))) { speed += 7 }
+            } else {
+                //跑完了
+                let msgBox = document.getElementById('msg')
+                let val = brick_Data[currentIndex].target()
+                msgBox.innerText = `${val}`
+            }
+        }
+    </script>
+
+
+</body>
+
+</html>
