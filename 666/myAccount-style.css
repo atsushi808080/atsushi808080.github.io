@@ -1,0 +1,328 @@
+body {
+    font-family: 'Arial', Microsoft JhengHei, '微軟正黑體', sans-serif;
+}
+
+.nav-item.tab-gap {
+    flex-grow: 1.5;
+}
+
+.nav-link-sm {
+    font-size: 0.5rem;
+}
+
+
+
+.list-group a {
+    text-decoration: none;
+    color: #6A7079;
+}
+.list-group .count {
+    color: #999999;
+}
+
+.list-group li {
+    border-top: none;
+    border-bottom: none;
+    font-size: 11px;
+}
+
+.breadcrumb,
+.breadcrumb li a {
+    color: #232A35;
+    font-size: 11px;
+}
+
+.alert-box {
+    padding: 5px;
+    font-size: 11px;
+    color: #3978FF;
+    background: #F4F7FF;
+}
+
+.alert-box a {
+    font-size: 11px;
+    color: #6596FF;
+}
+
+.container {
+    padding-left: 70px;
+    padding-right: 70px;
+
+}
+
+.card-no-radius {
+    border-radius: 0;
+}
+
+.card-title-p a {
+    padding: 0;
+    font-size: 11px;
+}
+
+.card-title-p {
+    padding: 5px;
+    font-size: 11px;
+}
+
+
+.card-text a {
+    text-decoration: none;
+    color: #6A7079;
+}
+
+.card-text-info::before {
+    content: "\2022";
+    margin-right: 1px;
+}
+
+.card-text,
+.card-title {
+    color: #6A7079;
+    font-size: 11px;
+}
+
+.card-text-info {
+    font-size: 12px;
+    margin-bottom: 7px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+/* ------------- */
+#topbackground {
+    height: 190px;
+    background-color: #fff;
+    color: #232a35;
+    margin-left: -2px;
+    border: 1px solid #E9EAEB;
+    position: relative;
+    border-radius: 4px
+}
+
+
+#topbackground li.a2 a {
+    position: absolute;
+    top: 15px;
+    left: 21px;
+    width: 118px;
+    height: 148px;
+    background-color: #f4f7ff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px
+}
+
+
+#topbackground li.a2 span {
+    font-size: 12px;
+    font-weight: normal;
+    color: #6596ff;
+    text-align: center;
+    letter-spacing: 1.5px
+}
+
+#topbackground li.a3 {
+    position: absolute;
+    background-color: #7f7f7f;
+    width: 68px;
+    height: 21px;
+    color: #fff;
+    line-height: 18px;
+    text-align: center;
+    top: 20px;
+    left: 67px;
+    cursor: pointer;
+    display: none;
+    opacity: 0.5;
+    filter: alpha(opacity=50)
+}
+
+
+#topbackground li.a4 {
+    float: left;
+    color: #2b3340;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 30px;
+    text-align: center;
+    margin: 24px 12px 0 25px;
+    /* _margin-left: 13px */
+}
+
+#topbackground li.a5 {
+    bottom: 5px;
+    font-size: 12px;
+    font-weight: normal;
+    left: 13px;
+    line-height: 18px;
+    margin-left: 10px;
+    position: absolute;
+    text-align: center;
+    color: #80858c
+}
+
+#topbackground li.a6 {
+    top: 62px;
+    left: 156px;
+    position: absolute;
+    font-size: 14px;
+    color: #353D49;
+    text-align: left;
+    margin-left: 10px;
+    font-weight: normal
+}
+
+#topbackground li.update {
+    top: 114px;
+    left: 156px;
+    position: absolute;
+    font-size: 14px;
+    color: #353D49;
+    text-align: left;
+    margin-left: 10px;
+    font-weight: normal
+}
+
+#topbackground li.update a {
+    font-weight: bold
+}
+
+
+#topbackground a.a6-2 {
+    width: 60px;
+    display: inline-block;
+    font-size: 14px;
+    text-align: left;
+    font-weight: bold;
+    height: 20px;
+    position: relative;
+    top: 0px;
+}
+
+#topbackground li.a7 {
+    top: 88px;
+    left: 156px;
+    position: absolute;
+    font-size: 14px;
+    color: #353D49;
+    line-height: 18px;
+    text-align: center;
+    margin-left: 10px;
+    font-weight: normal
+}
+
+
+#topbackground .line {
+    height: 72%;
+    width: 1px;
+    right: 200px;
+    top: 26px;
+    position: absolute;
+    background: #E1E6ED
+}
+
+
+#topbackground ul.Interview {
+    width: 160px;
+    position: absolute;
+    top: 27px;
+    right: 22px
+}
+
+#topbackground ul.Interview div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center
+}
+
+
+#topbackground li.title {
+    margin-bottom: 7px;
+    color: #353d49;
+    font-size: 16px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: normal
+}
+
+
+#topbackground .Interview .edit {
+    border: 1px solid #FA1E50;
+    border-radius: 4px;
+    color: #FA1E50;
+    padding: 7px 15px;
+    font-size: 14px;
+    display: block;
+    margin: 11px auto 0 auto;
+    text-align: center;
+    transition: .2s;
+    cursor: pointer;
+    width: fit-content
+}
+
+#topbackground .Interview .edit:hover {
+    background: #FA1E50;
+    color: white
+}
+
+
+#topbackground span {
+    color: #fe6701;
+    font-size: 14px;
+    line-height: 18px;
+    text-align: center;
+    font-weight: bold
+}
+
+
+#topbackground ul.a1 {
+    float: left;
+    height: 180px
+}
+
+#topbackground li.a1 {
+    text-indent: -9999px;
+    width: 120px;
+    height: 148px;
+    margin-left: 20px;
+    margin-top: 15px
+}
+
+li {
+    text-decoration: none
+}
+.card-text-red:hover{
+    color: red;
+}
+
+.list-group .count {
+    color: #999999;
+}
+
+
+.list-group-item a:hover{
+    color: black;
+}
+
+
+
+.card-header-tabs .nav-link {
+    color: #6A7079 !important;
+    font-weight: 600;
+}
+
+.card-header-tabs .nav-item:hover {
+    color: #000 !important;
+}
