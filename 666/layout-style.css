@@ -133,6 +133,7 @@ header .haban-logo-mascot {
     font-weight: bold;
 }
 
+
 .is-m .comp_img {
     position: absolute;
     bottom: 0;
@@ -154,9 +155,15 @@ header .haban-logo-mascot {
     display: block;
 }
 
+
 .dropdown-toggle .icon {
     position: relative;
     top: 6px;
+}
+
+.dropdown-menu .dropdown-item {
+    color: #2B3340;
+    font-size: 14px;
 }
 
 .dropdown-menu {
