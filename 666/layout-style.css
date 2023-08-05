@@ -163,11 +163,12 @@ header .haban-logo-mascot {
 
 .dropdown-menu .dropdown-item {
     color: #2B3340;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 .dropdown-menu {
     border-radius: 0 !important;
+    --bs-dropdown-link-active-bg: transparent;
 }
 
 .dropdown-menu li span {
@@ -558,6 +559,13 @@ footer .footer-bottom-content .footer-end-wrap {
 
 }
 
+.dropdown-menu .dropdown-item {
+    display: flex; align-items: center;
+}
+
+.dropdown-menu .dropdown-item span {
+    display: inline-block; margin-bottom: 8px;margin-left: 10px;
+}
 
 /* footer */
 
