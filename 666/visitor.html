@@ -8,18 +8,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <style>
-
         body {
             font-family: 'Arial', Microsoft JhengHei, '微軟正黑體', sans-serif;
         }
 
-        .nav-item.tab-gap {
-            flex-grow: 1.5;
-        }
-
-        .nav-link-sm {
-            font-size: 0.5rem;
-        }
 
         .list-group a {
             text-decoration: none;
@@ -38,17 +30,6 @@
             font-size: 11px;
         }
 
-        .alert-box {
-            padding: 5px;
-            font-size: 11px;
-            color: #3978FF;
-            background: #F4F7FF;
-        }
-
-        .alert-box a {
-            font-size: 11px;
-            color: #6596FF;
-        }
 
         .container {
             padding-left: 70px;
@@ -56,44 +37,7 @@
 
         }
 
-        .card-no-radius {
-            border-radius: 0;
-        }
 
-        .card-title-p a {
-            padding: 0;
-            font-size: 11px;
-        }
-
-        .card-title-p {
-            padding: 5px;
-            font-size: 11px;
-        }
-
-
-        .card-text a {
-            text-decoration: none;
-            color: #6A7079;
-        }
-
-        .card-text-info::before {
-            content: "\2022";
-            margin-right: 1px;
-        }
-
-        .card-text,
-        .card-title {
-            color: #6A7079;
-            font-size: 11px;
-        }
-
-        .card-text-info {
-            font-size: 12px;
-            margin-bottom: 7px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
 
         a {
             text-decoration: none;
@@ -101,216 +45,46 @@
 
 
         /* ------------- */
-        #topbackground {
-            height: 190px;
-            background-color: #fff;
-            color: #232a35;
-            margin-left: -2px;
-            border: 1px solid #E9EAEB;
-            position: relative;
-            border-radius: 4px
-        }
 
-
-        #topbackground li.a2 a {
-            position: absolute;
-            top: 15px;
-            left: 21px;
-            width: 118px;
-            height: 148px;
-            background-color: #f4f7ff;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            border-radius: 4px
-        }
-
-
-        #topbackground li.a2 span {
-            font-size: 12px;
-            font-weight: normal;
-            color: #6596ff;
-            text-align: center;
-            letter-spacing: 1.5px
-        }
-
-        #topbackground li.a3 {
-            position: absolute;
-            background-color: #7f7f7f;
-            width: 68px;
-            height: 21px;
-            color: #fff;
-            line-height: 18px;
-            text-align: center;
-            top: 20px;
-            left: 67px;
-            cursor: pointer;
-            display: none;
-            opacity: 0.5;
-            filter: alpha(opacity=50)
-        }
-
-
-        #topbackground li.a4 {
-            float: left;
-            color: #2b3340;
+        .change-right h2 {
             font-size: 20px;
             font-weight: bold;
-            line-height: 30px;
-            text-align: center;
-            margin: 24px 12px 0 25px;
-            /* _margin-left: 13px */
+            border-left: 5px solid #fa1e50;
+            padding-left: 20px;
+            margin-bottom: 20px;
         }
 
-        #topbackground li.a5 {
-            bottom: 5px;
-            font-size: 12px;
-            font-weight: normal;
-            left: 13px;
-            line-height: 18px;
-            margin-left: 10px;
-            position: absolute;
-            text-align: center;
-            color: #80858c
+        .change-right .card {
+            padding-top: 40px;
+            border-radius: 0;
+            height: 451.33px;
         }
 
-        #topbackground li.a6 {
-            top: 62px;
-            left: 156px;
-            position: absolute;
-            font-size: 14px;
-            color: #353D49;
-            text-align: left;
-            margin-left: 10px;
-            font-weight: normal
+        .pic img {
+            width: 200px;
         }
 
-        #topbackground li.update {
-            top: 114px;
-            left: 156px;
-            position: absolute;
-            font-size: 14px;
-            color: #353D49;
-            text-align: left;
-            margin-left: 10px;
-            font-weight: normal
+        .pic {
+            margin-bottom: 12px;
         }
 
-        #topbackground li.update a {
-            font-weight: bold
-        }
-
-
-        #topbackground a.a6-2 {
-            width: 60px;
-            display: inline-block;
-            font-size: 14px;
-            text-align: left;
+        .card p {
+            font-size: 18px;
+            line-height: 24px;
+            margin-bottom: 12px;
+            color: #2B3340;
             font-weight: bold;
-            height: 20px;
-            position: relative;
-            top: 0px;
         }
 
-        #topbackground li.a7 {
-            top: 88px;
-            left: 156px;
-            position: absolute;
-            font-size: 14px;
-            color: #353D49;
-            line-height: 18px;
-            text-align: center;
-            margin-left: 10px;
-            font-weight: normal
-        }
-
-
-        #topbackground .line {
-            height: 72%;
-            width: 1px;
-            right: 200px;
-            top: 26px;
-            position: absolute;
-            background: #E1E6ED
-        }
-
-
-        #topbackground ul.Interview {
-            width: 160px;
-            position: absolute;
-            top: 27px;
-            right: 22px
-        }
-
-        #topbackground ul.Interview div {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center
-        }
-
-
-        #topbackground li.title {
-            margin-bottom: 7px;
-            color: #353d49;
+        .card a {
             font-size: 16px;
+            line-height: 24px;
             font-weight: bold;
-            font-stretch: normal;
-            font-style: normal;
-            line-height: 1.5;
-            letter-spacing: normal
-        }
-
-
-        #topbackground .Interview .edit {
-            border: 1px solid #FA1E50;
+            padding: 10px 16px;
             border-radius: 4px;
-            color: #FA1E50;
-            padding: 7px 15px;
-            font-size: 14px;
-            display: block;
-            margin: 11px auto 0 auto;
-            text-align: center;
-            transition: .2s;
-            cursor: pointer;
-            width: fit-content
-        }
-
-        #topbackground .Interview .edit:hover {
+            color: #fff;
             background: #FA1E50;
-            color: white
-        }
-
-
-        #topbackground span {
-            color: #fe6701;
-            font-size: 14px;
-            line-height: 18px;
-            text-align: center;
-            font-weight: bold
-        }
-
-
-        #topbackground ul.a1 {
-            float: left;
-            height: 180px
-        }
-
-        #topbackground li.a1 {
-            text-indent: -9999px;
-            width: 120px;
-            height: 148px;
-            margin-left: 20px;
-            margin-top: 15px
-        }
-
-        li {
-            text-decoration: none
-        }
-        .card-text-red:hover{
-            color: red;
+            border: solid 1px #FA1E50;
         }
 
     </style>
@@ -322,7 +96,7 @@
             <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="./myAccount-1.html" class="text-decoration-none">我的帳戶首頁</a></li>
-                    <li class="breadcrumb-item" aria-current="page">我的帳戶</li>
+                    <li class="breadcrumb-item" aria-current="page">來訪通知</li>
                 </ol>
             </nav>
             <!-- <div class="col mx-1"><a href="#">我的帳戶首頁</a> > <span>我的帳戶</span></div> -->
@@ -331,7 +105,7 @@
             <div class="col-3 px-2">
                 <ul class="list-group text-center">
                     <li class="list-group-item fw-bold" style="color: #005290;background-color: #F4F5F5;">求職工作區</li>
-                    <li class="list-group-item"><a href="#"> 
+                    <li class="list-group-item"><a href="#">
                             <svg class="ai-icon" xmlns:xlink="http://www.w3.org/1999/xlink"
                                 xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"
                                 fill="none">
@@ -353,7 +127,7 @@
                                 <path
                                     d="M16.3125 7.93921C16.5698 7.93921 16.7783 8.14776 16.7783 8.40503V11.5691C16.7783 11.8264 16.5698 12.0349 16.3125 12.0349C16.0552 12.0349 15.8467 11.8264 15.8467 11.5691V8.40503C15.8467 8.14776 16.0552 7.93921 16.3125 7.93921Z"
                                     fill="#6A7079"></path>
-                            </svg><span style="white-space: pre-wrap;vertical-align: bottom;margin-left: 1px;margin-right: 1px;"> AI自傳</span>
+                            </svg><span style="vertical-align: bottom;margin-left: 1px;margin-right: 1px;"> AI自傳</span>
 
                             <svg class="new-icon" xmlns="http://www.w3.org/2000/svg"
                                 xmlns:xlink="http://www.w3.org/1999/xlink" width="35" height="18" viewBox="0 0 35 18"
@@ -384,7 +158,7 @@
                                 <path fill-rule="evenodd" clip-rule="evenodd"
                                     d="M2.06507 7.08212L4.78649 14.5592V15.5146C4.78649 16.5486 5.62464 17.3867 6.65856 17.3867H12.8285C13.8624 17.3867 14.7006 16.5486 14.7006 15.5146V14.5954L17.4352 7.08212C17.7888 6.11056 17.2878 5.03628 16.3163 4.68266L14.6909 4.09108C14.5952 3.14695 13.7979 2.41016 12.8285 2.41016H6.65856C5.68747 2.41016 4.88907 3.14954 4.79563 4.09606L3.18395 4.68266C2.21239 5.03628 1.71145 6.11056 2.06507 7.08212ZM3.50259 5.55812L4.78649 5.09082V11.8352L2.94053 6.76348C2.76288 6.27542 3.01453 5.73576 3.50259 5.55812ZM5.71813 14.4122C5.72942 14.471 5.72898 14.5302 5.71813 14.5868V15.5146C5.71813 16.034 6.13917 16.4551 6.65856 16.4551H12.8285C13.3479 16.4551 13.7689 16.034 13.7689 15.5146V4.28223C13.7689 3.76284 13.3479 3.3418 12.8285 3.3418H6.65856C6.13917 3.3418 5.71813 3.76284 5.71813 4.28223V14.4122ZM14.7006 5.08602V11.8714L16.5597 6.76348C16.7373 6.27542 16.4857 5.73576 15.9976 5.55812L14.7006 5.08602Z"
                                     fill="#6A7079"></path>
-                            </svg><span style="white-space: pre-wrap; vertical-align: bottom;margin-left: 2px;"> 職場性格測驗</span>
+                            </svg><span style=" vertical-align: bottom;margin-left: 2px;"> 職場性格測驗</span>
                         </a></li>
                     <li class="list-group-item fw-bold" style="color: #005290;background-color: #F4F5F5;">通知中心</li>
                     <li class="list-group-item"><a href="#">聊聊通知</a></li>
@@ -415,208 +189,23 @@
                     </li>
                 </ul>
             </div>
-
-            <div class="col-9 px-0">
-                <!-- ---- -->
-
-                <div id="topbackground">
-                    <ul class="a1 list-unstyled">
-                        <li class="a1">123</li>
-                        <li class="a2">
-                            <div class="tippy" id="avatarTippy" style="display: none;">
-                                <div class="tippy-arrow"></div>
-                            </div>
-
-                            <a href="#" data-avatar-update>
-                                <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"
-                                    width="56" height="56" viewBox="0 0 56 56">
-                                    <g fill="none" fill-rule="evenodd">
-                                        <path d="M0 0h56v56H0z"></path>
-                                        <path
-                                            d="M32.966 10.418a3.855 3.855 0 0 1 3.855 3.792v1.02h1.481a1.45 1.45 0 0 1 1.45 1.426v.024a1.45 1.45 0 0 1-1.426 1.449h-2.823a1.58 1.58 0 0 1-1.58-1.555V14.273a.957.957 0 0 0-.94-.956h-9.117a.957.957 0 0 0-.957.938V16.548a1.58 1.58 0 0 1-1.555 1.58h-9.432a2.05 2.05 0 0 0-2.05 2.018v20.06c0 1.122.899 2.033 2.016 2.05l.034.001h32.167a2.05 2.05 0 0 0 2.05-2.017V26.082a1.45 1.45 0 0 1 2.9-.024v14.148a4.95 4.95 0 0 1-4.868 4.949H11.922a4.95 4.95 0 0 1-4.949-4.867V20.18a4.95 4.95 0 0 1 4.867-4.949h8.17v-.958a3.855 3.855 0 0 1 3.792-3.855h9.164zm-4.392 12.14a8.04 8.04 0 1 1 0 16.079 8.04 8.04 0 0 1 0-16.078zm0 2.899a5.14 5.14 0 1 0 0 10.281 5.14 5.14 0 0 0 0-10.281zM18.54 21.109a2.187 2.187 0 1 1 0 4.375 2.187 2.187 0 0 1 0-4.375zm28.984-8.996a1.45 1.45 0 0 1 1.45 1.426v1.718h2.132a1.45 1.45 0 0 1 .024 2.9l-2.156-.001v2.57a1.45 1.45 0 0 1-2.899.025v-2.595H43.94a1.45 1.45 0 0 1-.024-2.898h.024l2.133-.001v-1.694c0-.8.65-1.45 1.45-1.45z"
-                                            fill="#A7C3FF"></path>
-                                    </g>
-                                </svg>
-                                <span>設定個人照</span>
-                            </a>
-                        </li>
-                    </ul>
-                    <ul class="a2 list-unstyled">
-                        <li class="a4">Hi, 新朋友</li>
-                        <li class="a5">求職代碼：5606131</li>
-                        <li class="a6">預設履歷：<span class="res-name"><a href="#">尚未建立履歷</a></span><a href="#"
-                                class="linkc" style="display:none" target="_blank">預覽</a></li>
-                        <li class="a7">履歷狀態：<a class="a6-2" href="#">關閉中</a></li>
-                        <li class="update">配對通報：<a class="r" href="#">不接收</a></li>
-                    </ul>
-                    <ul class="a3 list-unstyled" style="display:none">
-                        <div class="a8">收件信箱：<a href='#'>atsushi8080@gmail.com</a></div>
-                        <li class="a8-1"><a href="#" class="thickbox linkb" title="尚未認證">尚未認證</a></li>
-                    </ul>
-                    <div class="line"></div>
-                    <ul class="Interview list-unstyled">
-                        <div id="description">
-                            <li class="title">履歷星級</li>
-                            <li class="number">
-                                <i class="grade__star grade__star--default"><img src="./star.svg" alt=""></i>
-                                <i class="grade__star grade__star--default"><img src="./star.svg" alt=""></i>
-                                <i class="grade__star grade__star--default"><img src="./star.svg" alt=""></i>
-                            </li>
-                        </div>
-                        <a class="edit" href="#">前往編輯</a>
-                    </ul>
-                </div>
-                <!-- ---- -->
-
-
-                <!-- <div class="card" style="height: 200px;">
-                    <div class="row g-0">
-                        <div class="col-md-4">
-                            <a href="#"><svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56">
-                                <g fill="none" fill-rule="evenodd">
-                                    <path d="M0 0h56v56H0z"></path>
-                                    <path d="M32.966 10.418a3.855 3.855 0 0 1 3.855 3.792v1.02h1.481a1.45 1.45 0 0 1 1.45 1.426v.024a1.45 1.45 0 0 1-1.426 1.449h-2.823a1.58 1.58 0 0 1-1.58-1.555V14.273a.957.957 0 0 0-.94-.956h-9.117a.957.957 0 0 0-.957.938V16.548a1.58 1.58 0 0 1-1.555 1.58h-9.432a2.05 2.05 0 0 0-2.05 2.018v20.06c0 1.122.899 2.033 2.016 2.05l.034.001h32.167a2.05 2.05 0 0 0 2.05-2.017V26.082a1.45 1.45 0 0 1 2.9-.024v14.148a4.95 4.95 0 0 1-4.868 4.949H11.922a4.95 4.95 0 0 1-4.949-4.867V20.18a4.95 4.95 0 0 1 4.867-4.949h8.17v-.958a3.855 3.855 0 0 1 3.792-3.855h9.164zm-4.392 12.14a8.04 8.04 0 1 1 0 16.079 8.04 8.04 0 0 1 0-16.078zm0 2.899a5.14 5.14 0 1 0 0 10.281 5.14 5.14 0 0 0 0-10.281zM18.54 21.109a2.187 2.187 0 1 1 0 4.375 2.187 2.187 0 0 1 0-4.375zm28.984-8.996a1.45 1.45 0 0 1 1.45 1.426v1.718h2.132a1.45 1.45 0 0 1 .024 2.9l-2.156-.001v2.57a1.45 1.45 0 0 1-2.899.025v-2.595H43.94a1.45 1.45 0 0 1-.024-2.898h.024l2.133-.001v-1.694c0-.8.65-1.45 1.45-1.45z" fill="#A7C3FF"></path>
-                                </g>
-                            </svg></a>
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title"> </h5>
-                                <p class="card-text"> </p>
-                                <p class="card-text"> <small class="text-body-secondary"> </small>
-                                </p>
-                            </div>
-                        </div>
+            <!-- ---- -->
+            <div class="change-right col-9 px-0">
+                <h2>來訪通知</h2>
+                <div class="card text-center">
+                    <div class="pic ">
+                        <img src="./visitor-bear.svg" alt="...">
                     </div>
-                </div> -->
-
-                <div class="alert-box alert text-center my-2" role="alert">
-                    溫馨提醒：666蛤班不會透過驗證簡訊要求會員點擊不明連結，若接獲請勿理會。<a href="#">更多說明»</a>
-                </div>
-
-
-
-
-                <div class="card card-no-radius">
-                    <div class="card-header">
-
-                        <ul class="nav nav-tabs card-header-tabs">
-                            <li class="nav-item">
-                                <a class="nav-link active nav-link-sm text-black" data-toggle="tab"
-                                    href="#tab1">主動應徵紀錄</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link nav-link-sm text-black" data-toggle="tab" href="#tab2">公司來訪紀錄</a>
-                            </li>
-                            <li class="nav-item tab-gap"></li>
-
-                            <li class="nav-item">
-                                <a class="nav-link nav-link-sm border-0" href="#">更多</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="card-body">
-
-                        <div class="tab-content" style="height: 140px;">
-                            <div class="tab-pane fade show active" id="tab1">
-                                <h5 class="card-title" style="white-space: pre-wrap;">公司名稱                                                應徵職務                                      讀取狀態                                    回應日期</h5>
-                                <p class="card-text">尚無主動應徵記錄</p>
-                            </div>
-                            <div class="tab-pane fade" id="tab2">
-                                <h5 class="card-title" style="white-space: pre-wrap;">公司名稱                                                產業別                                        總職缺數                                      來訪日期</h5>
-                                <p class="card-text">尚無公司來訪記錄</p>
-                            </div>
-                        </div>
+                    <p>目前沒有來訪紀錄</p>
+                    <p style="color: #80858C;font-size: 16px;font-weight: 500;margin-bottom: 32px;">目前還沒有企業看過你的履歷</p>
+                    <div>
+                        <a href="#">前往更新履歷</a>
                     </div>
                 </div>
-                <!-- <div class="tab-content" style="height: 140px;">
-                    <div class="tab-pane fade show active" id="tab1">
-                        <h5 class="card-title" style="white-space: pre-wrap;">公司名稱                                                應徵職務                                      讀取狀態                                    回應日期</h5>
-                        <p class="card-text">尚無主動應徵記錄</p>
-                    </div>
-                    <div class="tab-pane fade" id="tab2">
-                        <h5 class="card-title" style="white-space: pre-wrap;">公司名稱                                                產業別                                        總職缺數                                      來訪日期</h5>
-                        <p class="card-text">尚無公司來訪記錄</p>
-                    </div>
-                </div> -->
-
-
-
-
-                <div class="row mt-2">
-                    <div class="col-md-6">
-                        <div class="card card-no-radius mb-3" style="height: 200px;">
-                            <div class="card-header card-title-p">
-                                <div class="fw-bold d-flex justify-content-between align-items-center">
-                                    <span>個人化推薦工作</span>
-
-                                    <a href="#" class="pe-3 fw-normal text-primary">更多</a>
-                                </div>
-                            </div>
-                            <div class="card-body text-secondary">
-                                <h5 class="card-title">針對您的媒合內容，挑選出幾家推薦的公司給您</h5>
-                                <p class="card-text "><a class="card-text-red" href="#">您尚未建立媒合內容</a></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 ps-1">
-                        <div class="card card-no-radius mb-3" style="height: 200px;">
-                            <div class="card-header card-title-p">
-                                <div class="fw-bold d-flex justify-content-between align-items-center">
-                                    <span>我的履歷</span>
-
-                                    <a href="#" class="pe-3 fw-normal text-primary">編輯履歷</a>
-                                </div>
-                            </div>
-                            <div class="card-body text-secondary">
-                                <h5 class="card-title">履歷星級
-                                    <img src="./star-1.svg" alt="">
-                                    <img src="./star-1.svg" alt="">
-                                    <img src="./star-1.svg" alt=""></h5>
-                                <p class="card-text">履歷星級越高，就越有機會獲得邀請面試唷～</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row mt-0">
-                    <div class="col-md-6">
-                        <div class="card card-no-radius mb-3" style="height: 200px;">
-                            <div class="card-header card-title-p">
-                                <div class="fw-bold d-flex justify-content-between align-items-center">
-                                    <span>最近瀏覽職缺</span>
-
-                                    <a href="#" class="pe-3 fw-normal text-primary">清除</a>
-                                </div>
-                            </div>
-                            <div class="card-body text-secondary">
-                                <h5 class="card-title" style="white-space: pre-wrap;">職務名稱                                      公司名稱</h5>
-                                <p class="card-text">目前沒有瀏覽記錄</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 ps-1">
-                        <div class="card card-no-radius mb-3" style="height: 200px;">
-                            <div class="fw-bold card-header card-title-p">網站公告</div>
-                            <div class="card-body text-secondary">
-                                <!-- <h5 class="card-title">   </h5> -->
-                                <p class="card-text card-text-info"><a href="#">【重要】666客服中心，將於2023/08/03暫停服務公告</a></p>
-                                <p class="card-text card-text-info"><a href="#">【宣導】勿輕信任何管道所稱高薪聘請赴緬甸工作詐騙陷阱防範宣導</a></p>
-                                <p class="card-text card-text-info"><a href="#">【重要】666網路平台-約定條款修訂公告</a></p>
-                                <p class="card-text card-text-info"><a href="#">【活動-已結束】4月福委出任務，夏日登入喝手搖</a></p>
-                                <p class="card-text card-text-info"><a href="#">【加碼活動-已結束】 新朋友限定！即日起至3月底，下載註冊送早餐</a></p>
-                                <p class="card-text card-text-info"><a href="#">【宣導】勿輕信任何管道所稱高薪聘請赴緬甸工作詐騙陷阱防範宣導</a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-
-
-
             </div>
-        </div>
 
+        </div>
+    </div>
     </div>
 
 
@@ -629,11 +218,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <script>
-        $(document).ready(function () {
-            $('.nav-link').mouseover(function () {
-                $(this).trigger('click');
-            });
-        });
+
     </script>
 </body>
 
