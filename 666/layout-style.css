@@ -559,7 +559,7 @@ footer .footer-bottom-content .footer-end-wrap {
 }
 .icon-s a {
     color: transparent;
-    margin-left: 12px;
+    /* margin-left: 12px; */
 }
 
 .icon-s a img {
@@ -572,7 +572,8 @@ footer .footer-bottom-content .footer-end-wrap {
     line-height: 1.5;
     color: #232a35;
     font: normal normal 12px Verdana, Arial, '新微軟正黑體', Helvetica, sans-serif;
-    padding: 64px 0;
+    padding-top: 64px;
+    padding-bottom: 64px;
     margin-top: 64px;
 }
 
