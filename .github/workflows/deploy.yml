@@ -10,12 +10,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3  # 更新到最新版本
+      - uses: actions/checkout@v3  # 確認這是最新版並支持 Node.js 20
 
       - name: Set up Node.js
-        uses: actions/setup-node@v3  # 更新到最新版本
+        uses: actions/setup-node@v3  # 確認這是最新版並支持 Node.js 20
         with:
-          node-version: '20'  # 更新到 Node.js 20
+          node-version: '20'
 
       - name: Install dependencies
         run: npm install
@@ -24,7 +24,7 @@ jobs:
         run: npm run build
 
       - name: Deploy
-        uses: peaceiris/actions-gh-pages@v4  # 假設 v4 是最新版本，請檢查實際可用的最新版本
+        uses: peaceiris/actions-gh-pages@v4  # 使用適當的版本
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
