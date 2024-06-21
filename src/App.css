@@ -43,6 +43,8 @@ body {
   height: 100%;
   cursor: pointer;
 }
+
+
 .todo {
   background-color: #3b36cc;
   height: 40px;
